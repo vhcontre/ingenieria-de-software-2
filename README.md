@@ -8,12 +8,12 @@ Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositori
 
 | Unidad | Tema | Acceso |
 |-------|------|--------|
-| 🔹 Intro | Introducción a la Ingeniería de Software | [00_Introducción_EngSoft](00_Introducción_EngSoft.md) |
-| 1️⃣ | Métricas y Medición | [01_Unidad1_Metricas](01_Unidad1_Metricas.md) |
-| 2️⃣ | Gestión de Riesgos | [02_Unidad2_GestionRiesgos](02_Unidad2_GestionRiesgos.md) |
-| 3️⃣ | Diseño Arquitectónico y Patrones | [03_Unidad3_DisenioArquitectonico](03_Unidad3_DisenioArquitectonico.md) |
+| 🔹 Intro | Introducción a la Ingeniería de Software | [00_Introducción_EngSoft](00_Introducción_EngSoft) |
+| 1️⃣ | Métricas y Medición | [01_Unidad1_Metricas](01_Unidad1_Metricas) |
+| 2️⃣ | Gestión de Riesgos | [02_Unidad2_GestionRiesgos](02_Unidad2_GestionRiesgos) |
+| 3️⃣ | Diseño Arquitectónico y Patrones | [03_Unidad3_DisenioArquitectonico](03_Unidad3_DisenioArquitectonico) |
 | 4️⃣ | Estrategias de Pruebas | [04_Unidad4_Pruebas](04_Unidad4_Pruebas.md) |
-| 5️⃣ | Control de Versiones y Configuración | [05_Unidad5_AdminConfiguracion](05_Unidad5_AdminConfiguracion.md) |
+| 5️⃣ | Control de Versiones y Configuración | [05_Unidad5_AdminConfiguracion](05_Unidad5_AdminConfiguracion) |
 
 ---
 
@@ -21,21 +21,21 @@ Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositori
 
 Incluye desarrollo incremental de un sistema real con herramientas modernas (Python, FastAPI, SQLAlchemy, GitHub Actions, Docker, etc).
 
-➡️ Ver cronograma detallado: [06_Planificacion_Proyecto](06_Planificacion_Proyecto.md)
+➡️ Ver cronograma detallado: [06_Planificacion_Proyecto](06_Planificacion_Proyecto)
 
 ---
 
 ## ✔️ Buenas prácticas
 
 Guía de normas de codificación, manejo de ramas, pruebas automatizadas y CI/CD con GitHub Actions.  
-🧭 Accedé a la sección: [07_BuenasPracticas](07_BuenasPracticas.md)
+🧭 Accedé a la sección: [07_BuenasPracticas](07_BuenasPracticas)
 
 ---
 
 ## 📚 Recursos y ayuda
 
-- Glosario de términos → [08_Glosario](08_Glosario.md)  
-- Material complementario (libros, videos, herramientas) → [09_Recursos](09_Recursos.md)
+- Glosario de términos → [08_Glosario](08_Glosario)  
+- Material complementario (libros, videos, herramientas) → [09_Recursos](09_Recursos)
 
 ---
 
