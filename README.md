@@ -1,6 +1,6 @@
-# 📦 Ingeniería de Software — Cursada + Proyecto
+# 📦 Ingeniería de Software 2
 
-Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositorio organiza los contenidos, recursos, documentación y planificación del proyecto final, que se desarrollará durante 12 semanas.
+Bienvenido/a a la wiki del curso de **Ingeniería de Software 2**. Este repositorio organiza los contenidos, recursos, documentación y planificación del proyecto final, que se desarrollará durante 12 semanas.
 
 ---
 
@@ -8,12 +8,12 @@ Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositori
 
 | Unidad | Tema | Acceso |
 |-------|------|--------|
-| 🔹 Intro | Introducción a la Ingeniería de Software | [00_Introducción_EngSoft](00_Introducción_EngSoft) |
-| 1️⃣ | Métricas y Medición | [01_Unidad1_Metricas](01_Unidad1_Metricas) |
-| 2️⃣ | Gestión de Riesgos | [02_Unidad2_GestionRiesgos](02_Unidad2_GestionRiesgos) |
-| 3️⃣ | Diseño Arquitectónico y Patrones | [03_Unidad3_DisenioArquitectonico](03_Unidad3_DisenioArquitectonico) |
-| 4️⃣ | Estrategias de Pruebas | [04_Unidad4_Pruebas](04_Unidad4_Pruebas.md) |
-| 5️⃣ | Control de Versiones y Configuración | [05_Unidad5_AdminConfiguracion](05_Unidad5_AdminConfiguracion) |
+| 🔹 Intro | Introducción a la Ingeniería de Software | [00_Introducción_EngSoft](https://github.com/vhcontre/inventario-2025/wiki/00_Introducción_EngSoft) |
+| 1️⃣ | Métricas y Medición | [01_Unidad1_Metricas](https://github.com/vhcontre/inventario-2025/wiki/01_Unidad1_Metricas) |
+| 2️⃣ | Gestión de Riesgos | [02_Unidad2_GestionRiesgos](https://github.com/vhcontre/inventario-2025/wiki/02_Unidad2_GestionRiesgos) |
+| 3️⃣ | Diseño Arquitectónico y Patrones | [03_Unidad3_DisenioArquitectonico](https://github.com/vhcontre/inventario-2025/wiki/03_Unidad3_DisenioArquitectonico) |
+| 4️⃣ | Estrategias de Pruebas | [04_Unidad4_Pruebas](https://github.com/vhcontre/inventario-2025/wiki/04_Unidad4_Pruebas) |
+| 5️⃣ | Control de Versiones y Configuración | [05_Unidad5_AdminConfiguracion](https://github.com/vhcontre/inventario-2025/wiki/05_Unidad5_AdminConfiguracion) |
 
 ---
 
@@ -21,21 +21,21 @@ Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositori
 
 Incluye desarrollo incremental de un sistema real con herramientas modernas (Python, FastAPI, SQLAlchemy, GitHub Actions, Docker, etc).
 
-➡️ Ver cronograma detallado: [06_Planificacion_Proyecto](06_Planificacion_Proyecto)
+➡️ Ver cronograma detallado: [06_Planificacion_Proyecto](https://github.com/vhcontre/inventario-2025/wiki/06_Planificacion_Proyecto)
 
 ---
 
 ## ✔️ Buenas prácticas
 
 Guía de normas de codificación, manejo de ramas, pruebas automatizadas y CI/CD con GitHub Actions.  
-🧭 Accedé a la sección: [07_BuenasPracticas](07_BuenasPracticas)
+🧭 Accedé a la sección: [07_BuenasPracticas](https://github.com/vhcontre/inventario-2025/wiki/07_BuenasPracticas)
 
 ---
 
 ## 📚 Recursos y ayuda
 
-- Glosario de términos → [08_Glosario](08_Glosario)  
-- Material complementario (libros, videos, herramientas) → [09_Recursos](09_Recursos)
+- Glosario de términos → [08_Glosario](https://github.com/vhcontre/inventario-2025/wiki/08_Glosario)  
+- Material complementario (libros, videos, herramientas) → [09_Recursos](https://github.com/vhcontre/inventario-2025/wiki/09_Recursos)
 
 ---
 
