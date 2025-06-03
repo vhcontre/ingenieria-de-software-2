@@ -1,9 +1,9 @@
 # app/db/models/producto.py
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from app.db.models.base import Base
+from app.db.models.base import EntityBase
 
-class Producto(Base):
+class ProductoORM(EntityBase):
     __tablename__ = "productos"
     
     nombre = Column(String, nullable=False)

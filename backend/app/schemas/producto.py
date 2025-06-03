@@ -1,9 +1,11 @@
+# app/schemas/producto.py
 from pydantic import BaseModel
+from typing import Optional
 
 class ProductoBase(BaseModel):
     nombre: str
     sku: str
-    descripcion: str
+    descripcion: Optional[str] = None
 
 class ProductoCreate(ProductoBase):
     pass

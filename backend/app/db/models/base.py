@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import Column, Integer
 import json
 
-class Base(DeclarativeBase):
+class EntityBase(DeclarativeBase):
     """Clase base para todos los modelos, con atributos y métodos comunes."""
 
     id = Column(Integer, primary_key=True, index=True)

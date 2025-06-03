@@ -1,8 +1,6 @@
-from dataclasses import dataclass
 from typing import Optional
+from domain.models.base_model import BaseModelWithId
 
-@dataclass
-class Deposito:
-    id: Optional[int]
+class Deposito(BaseModelWithId):
     nombre: str
     ubicacion: Optional[str] = None

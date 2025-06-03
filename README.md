@@ -39,6 +39,23 @@ Guía de normas de codificación, manejo de ramas, pruebas automatizadas y CI/CD
 
 ---
 
+## ⚙️ Plantillas y Ejemplos Útiles
+
+Para facilitar el trabajo y que puedan avanzar con ejemplos prácticos, aquí algunos recursos base:
+
+| Tema                    | Descripción                                 | Archivo de referencia                     |
+|-------------------------|---------------------------------------------|------------------------------------------|
+| 🚀 Base FastAPI          | Estructura mínima para backend con FastAPI | [`templates/fastapi_base.py`](templates/fastapi_base.py)   |
+| 🗃️ Modelos SQLAlchemy    | Ejemplo de modelos con SQLAlchemy           | [`templates/models_sqlalchemy.py`](templates/models_sqlalchemy.py) |
+| 🧪 Pruebas unitarias     | Caso básico de test con pytest              | [`templates/test_basic.py`](templates/test_basic.py)       |
+| 📝 Diseño de modelos     | Ejemplo de modelo de dominio Pydantic       | [`templates/domain_model.py`](templates/domain_model.py)   |
+| 📜 Documentación Swagger | Configuración básica de Swagger UI          | [`templates/swagger_setup.py`](templates/swagger_setup.py) |
+
+> 💡 Estos archivos están pensados como punto de partida para cada sección del proyecto. ¡Personalizalos según la necesidad!
+
+
+---
+
 ## 🤝 ¿Cómo usar esta Wiki?
 
 - Explorá los temas en orden o según tus necesidades.

@@ -1,9 +1,9 @@
 # app/db/models/deposito.py
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from app.db.models.base import Base
+from app.db.models.base import EntityBase
 
-class Deposito(Base):
+class DepositoORM(EntityBase):
     __tablename__ = "depositos"
     
     nombre = Column(String, nullable=False)

@@ -1,20 +1,19 @@
 # app/db/models/usuario.py
 from sqlalchemy import Column, Integer, String, Boolean, Table, ForeignKey
 from sqlalchemy.orm import relationship
-from app.db.models.base import Base
+from app.db.models.base import EntityBase
 
 # Tabla intermedia Usuario-Rol
 usuario_rol = Table(
     "usuario_rol",
-    Base.metadata,
+    EntityBase.metadata,
     Column("usuario_id", ForeignKey("usuarios.id"), primary_key=True),
     Column("rol_id", ForeignKey("roles.id"), primary_key=True)
 )
 
-class Usuario(Base):
+class UsuarioORM(EntityBase):
     __tablename__ = "usuarios"
-
-    id = Column(Integer, primary_key=True, index=True)
+    
     username = Column(String, unique=True, index=True, nullable=False)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String, nullable=False)
@@ -22,10 +21,10 @@ class Usuario(Base):
 
     roles = relationship("Rol", secondary=usuario_rol, back_populates="usuarios")
 
-class Rol(Base):
+class RolORM(EntityBase):
     __tablename__ = "roles"
 
-    id = Column(Integer, primary_key=True)
+    
     nombre = Column(String, unique=True, nullable=False)
 
     usuarios = relationship("Usuario", secondary=usuario_rol, back_populates="roles")

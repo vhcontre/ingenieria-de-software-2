@@ -3,14 +3,14 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from enum import Enum as PyEnum
 
-from app.db.models.base import Base
+from app.db.models.base import EntityBase
 
 class TipoMovimiento(PyEnum):
     ingreso = "ingreso"
     egreso = "egreso"
     traslado = "traslado"
 
-class Movimiento(Base):
+class MovimientoORM(EntityBase):
     __tablename__ = "movimientos"
     
     producto_id = Column(Integer, ForeignKey("productos.id"), nullable=False)

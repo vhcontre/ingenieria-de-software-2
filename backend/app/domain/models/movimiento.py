@@ -1,12 +1,10 @@
+# domain/models/movimiento.py
 from dataclasses import dataclass
-from typing import Optional
 from datetime import datetime
 from enum import Enum
-from domain.models.producto import Producto
-from domain.models.deposito import Deposito
-from domain.models.usuario import Usuario
+from typing import Optional
 
-class TipoMovimiento(str, Enum):
+class TipoMovimiento(Enum):
     ingreso = "ingreso"
     egreso = "egreso"
     traslado = "traslado"
@@ -14,10 +12,10 @@ class TipoMovimiento(str, Enum):
 @dataclass
 class Movimiento:
     id: Optional[int]
-    producto: Producto
-    deposito_origen: Optional[Deposito]
-    deposito_destino: Optional[Deposito]
-    usuario: Usuario
+    producto_id: int
+    deposito_origen_id: Optional[int]
+    deposito_destino_id: Optional[int]
+    usuario_id: int
     cantidad: int
     fecha: datetime
     tipo: TipoMovimiento
