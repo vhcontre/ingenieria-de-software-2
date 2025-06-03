@@ -2,8 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 @dataclass
-class Producto:
+class Deposito:
     id: Optional[int]
     nombre: str
-    sku: str
-    descripcion: Optional[str] = None
+    ubicacion: Optional[str] = None

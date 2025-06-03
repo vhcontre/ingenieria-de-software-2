@@ -2,8 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 @dataclass
-class Producto:
+class Rol:
     id: Optional[int]
     nombre: str
-    sku: str
-    descripcion: Optional[str] = None

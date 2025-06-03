@@ -1,49 +1,48 @@
-# 📦 Sistema de Inventario 2025
+# 📦 Ingeniería de Software — Cursada + Proyecto
 
-Proyecto educativo desarrollado como parte del curso de Ingeniería de Software.
+Bienvenido/a a la wiki del curso de **Ingeniería de Software**. Este repositorio organiza los contenidos, recursos, documentación y planificación del proyecto final, que se desarrollará durante 12 semanas.
 
-## 📁 Estructura del Proyecto
+---
 
-- `backend/`: API RESTful construida con FastAPI (Python).
-- `frontend/`: Aplicación SPA en Angular.
-- `docs/`: Diagramas, especificaciones y documentación.
-- `docker-compose.yml`: Configuración para entorno de desarrollo completo.
-  
-## 🚀 Tecnologías Utilizadas
+## 📘 Contenidos
 
-- **Backend:** Python, FastAPI, SQLAlchemy
-- **Frontend:** Angular, TypeScript
-- **Base de Datos:** MySQL (puede cambiarse fácilmente)
-- **Otros:** GitHub, Docker, GitHub Actions (CI/CD)
+| Unidad | Tema | Acceso |
+|-------|------|--------|
+| 🔹 Intro | Introducción a la Ingeniería de Software | [00_Introducción_EngSoft](00_Introducción_EngSoft.md) |
+| 1️⃣ | Métricas y Medición | [01_Unidad1_Metricas](01_Unidad1_Metricas.md) |
+| 2️⃣ | Gestión de Riesgos | [02_Unidad2_GestionRiesgos](02_Unidad2_GestionRiesgos.md) |
+| 3️⃣ | Diseño Arquitectónico y Patrones | [03_Unidad3_DisenioArquitectonico](03_Unidad3_DisenioArquitectonico.md) |
+| 4️⃣ | Estrategias de Pruebas | [04_Unidad4_Pruebas](04_Unidad4_Pruebas.md) |
+| 5️⃣ | Control de Versiones y Configuración | [05_Unidad5_AdminConfiguracion](05_Unidad5_AdminConfiguracion.md) |
 
-## 📦 Requisitos Iniciales
+---
 
-- Python 3.10+
-- Node.js + Angular CLI
-- Docker + Docker Compose
-- VS Code
+## 📅 Planificación del Proyecto (12 semanas)
 
-## 📜 Objetivos del Proyecto
+Incluye desarrollo incremental de un sistema real con herramientas modernas (Python, FastAPI, SQLAlchemy, GitHub Actions, Docker, etc).
 
-- Aprender buenas prácticas de ingeniería de software.
-- Aplicar conceptos como:
-  - Pruebas unitarias e integración.
-  - Patrones de arquitectura.
-  - Versionado y despliegue continuo.
+➡️ Ver cronograma detallado: [06_Planificacion_Proyecto](06_Planificacion_Proyecto.md)
 
-## 📘 Documentación
+---
 
-Ver carpeta [`/docs`](./docs) por semana.
+## ✔️ Buenas prácticas
 
-## 🛠️ Instalación rápida (desarrollo)
+Guía de normas de codificación, manejo de ramas, pruebas automatizadas y CI/CD con GitHub Actions.  
+🧭 Accedé a la sección: [07_BuenasPracticas](07_BuenasPracticas.md)
 
-```bash
-# Backend
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+---
 
-# Frontend
-cd frontend
-npm install
+## 📚 Recursos y ayuda
+
+- Glosario de términos → [08_Glosario](08_Glosario.md)  
+- Material complementario (libros, videos, herramientas) → [09_Recursos](09_Recursos.md)
+
+---
+
+## 🤝 ¿Cómo usar esta Wiki?
+
+- Explorá los temas en orden o según tus necesidades.
+- Consultá los ejemplos y aplicalos a tu propio proyecto.
+- Si tenés dudas o mejoras, podés sugerir cambios mediante _Issues_ o _Pull Requests_.
+
+> 🧠 “El software no se construye en soledad; se diseña, se prueba y se mejora en equipo.”
