@@ -1,20 +1,59 @@
 # app/console/producto_console.py
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from app.db.models.base import EntityBase
-from app.db.models import producto  # importa modelos para que SQLAlchemy los registre
+from app.db.session import SessionLocal
 from app.schemas.producto import ProductoCreate, ProductoUpdate
 from app.repositories.producto_repository import ProductoRepository
 
-DATABASE_URL = "sqlite:///./inventario.db"
-engine = create_engine(DATABASE_URL, echo=False)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+def crear_producto(repo):
+    nombre = input("Nombre del producto: ")            
+    sku = input("SKU: ")
+    descripcion = input("Descripción: ")
+    producto_in = ProductoCreate(nombre=nombre, sku=sku, descripcion=descripcion)
+    producto = repo.create_producto(producto_in)
+    print("Producto creado:", producto)
 
-def main():
-    EntityBase.metadata.create_all(bind=engine)
-    db = SessionLocal()
-    repo = ProductoRepository(db)
+def listar_productos(repo):
+    productos = repo.get_all_productos()
+    for p in productos:
+        print(f"[{p.id}] {p.nombre} - {p.sku} - {p.descripcion}")
+
+def actualizar_producto(repo):
+    try:
+        id_ = int(input("ID del producto a actualizar: "))
+    except ValueError:
+        print("ID inválido.")
+        return
+    nombre = input("Nuevo nombre (dejar vacío para no cambiar): ").strip() or None
+    sku = input("Nuevo SKU (dejar vacío para no cambiar): ").strip() or None
+    descripcion = input("Nueva descripción (dejar vacío para no cambiar): ").strip() or None
+    producto_upd = ProductoUpdate(nombre=nombre, sku=sku, descripcion=descripcion)
+    updated = repo.update_producto(id_, producto_upd)
+    if updated:
+        print("Producto actualizado:", updated)
+    else:
+        print("No se encontró producto con ese ID.")
+
+def eliminar_producto(repo):
+    try:
+        id_ = int(input("ID del producto a eliminar: "))
+    except ValueError:
+        print("ID inválido.")
+        return
+    deleted = repo.delete_producto(id_)
+    if deleted:
+        print("Producto eliminado.")
+    else:
+        print("No se encontró producto con ese ID.")
+
+def main():    
+    repo = ProductoRepository(SessionLocal())
+
+    menu = {
+        "1": lambda: crear_producto(repo),
+        "2": lambda: listar_productos(repo),
+        "3": lambda: actualizar_producto(repo),
+        "4": lambda: eliminar_producto(repo),
+    }
 
     while True:
         print("\n1. Crear producto")
@@ -24,41 +63,10 @@ def main():
         print("0. Salir")
         opcion = input("Ingrese opción: ")
 
-        if opcion == "1":
-            nombre = input("Nombre del producto: ")            
-            sku = input("SKU: ")
-            descripcion = input("Descripción: ")
-            producto_in = ProductoCreate(nombre=nombre, sku=sku, descripcion=descripcion)
-            producto = repo.create_producto(producto_in)
-            print("Producto creado:", producto)
-
-        elif opcion == "2":
-            productos = repo.get_all_productos()
-            for p in productos:
-                print(f"[{p.id}] {p.nombre} - {p.descripcion}")
-        
-        elif opcion == "3":
-            id_ = int(input("ID del producto a actualizar: "))
-            nombre = input("Nuevo nombre (dejar vacío para no cambiar): ").strip() or None
-            sku = input("Nuevo SKU (dejar vacío para no cambiar): ").strip() or None
-            descripcion = input("Nueva descripción (dejar vacío para no cambiar): ").strip() or None
-            producto_upd = ProductoUpdate(nombre=nombre, sku=sku, descripcion=descripcion)
-            updated = repo.update_producto(id_, producto_upd)
-            if updated:
-                print("Producto actualizado:", updated)
-            else:
-                print("No se encontró producto con ese ID.")
-        elif opcion == "4":
-            id_ = int(input("ID del producto a eliminar: "))
-            deleted = repo.delete_producto(id_)
-            if deleted:
-                print("Producto eliminado.")
-            else:
-                print("No se encontró producto con ese ID.")
-
-        elif opcion == "0":
+        if opcion == "0":
             break
-
+        elif opcion in menu:
+            menu[opcion]()
         else:
             print("Opción inválida.")
 

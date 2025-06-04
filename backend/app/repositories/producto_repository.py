@@ -20,6 +20,7 @@ class ProductoRepository:
         return producto_orm_to_domain(nuevo_orm)
     
     def update_producto(self, producto_id: int, producto_in: ProductoUpdate) -> Producto | None:
+        print("🛠️ Datos recibidos para actualización:", producto_in)
         orm = self.db.query(ProductoORM).filter(ProductoORM.id == producto_id).first()
         if orm is None:
             return None
