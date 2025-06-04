@@ -1,4 +1,4 @@
-from domain.models.deposito import Deposito
+from app.domain.models.deposito import Deposito
 from app.db.models.deposito import DepositoORM
 
 def deposito_orm_to_domain(orm: DepositoORM) -> Deposito:

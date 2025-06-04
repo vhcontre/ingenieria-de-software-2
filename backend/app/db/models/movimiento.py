@@ -21,7 +21,12 @@ class MovimientoORM(EntityBase):
     fecha = Column(DateTime, default=datetime.utcnow)
     tipo = Column(Enum(TipoMovimiento), nullable=False)
 
-    producto = relationship("Producto")
-    deposito_origen = relationship("Deposito", foreign_keys=[deposito_origen_id])
-    deposito_destino = relationship("Deposito", foreign_keys=[deposito_destino_id])
-    usuario = relationship("Usuario")
+    producto = relationship("ProductoORM", back_populates="movimientos")
+    deposito_origen = relationship("DepositoORM", foreign_keys=[deposito_origen_id], back_populates="movimientos_origen")
+    deposito_destino = relationship("DepositoORM", foreign_keys=[deposito_destino_id], back_populates="movimientos_destino")
+    usuario = relationship("UsuarioORM")
+
+# Al final del archivo movimiento.py
+from .producto import ProductoORM
+from .usuario import UsuarioORM
+from .deposito import DepositoORM

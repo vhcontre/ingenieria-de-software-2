@@ -10,4 +10,7 @@ class ProductoORM(EntityBase):
     sku = Column(String, unique=True, nullable=False)
     descripcion = Column(String)
 
-    movimientos = relationship("Movimiento", back_populates="producto")
+    movimientos = relationship("MovimientoORM", back_populates="producto")
+
+# Importación al final para evitar dependencias circulares
+from .movimiento import MovimientoORM

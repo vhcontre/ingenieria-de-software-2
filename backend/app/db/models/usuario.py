@@ -1,4 +1,3 @@
-# app/db/models/usuario.py
 from sqlalchemy import Column, Integer, String, Boolean, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.models.base import EntityBase
@@ -19,12 +18,7 @@ class UsuarioORM(EntityBase):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    roles = relationship("Rol", secondary=usuario_rol, back_populates="usuarios")
+    roles = relationship("RolORM", secondary=usuario_rol, back_populates="usuarios")
 
-class RolORM(EntityBase):
-    __tablename__ = "roles"
-
-    
-    nombre = Column(String, unique=True, nullable=False)
-
-    usuarios = relationship("Usuario", secondary=usuario_rol, back_populates="roles")
+# IMPORTACIÓN TARDÍA
+from .rol import RolORM
