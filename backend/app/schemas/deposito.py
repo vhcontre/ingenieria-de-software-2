@@ -1,14 +1,21 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
 
-class DepositoCreate(BaseModel):
-    nombre: str
-    ubicacion: Optional[str] = None
 
-class DepositoRead(BaseModel):
+class DepositoBase(BaseModel):
+    nombre: str = Field(..., min_length=1)
+    direccion: Optional[str] = None
+
+
+class DepositoCreate(DepositoBase):
+    pass
+
+
+class DepositoUpdate(BaseModel):
+    nombre: Optional[str] = Field(default=None, min_length=1)
+    direccion: Optional[str] = None
+
+
+class DepositoOut(DepositoBase):
     id: int
-    nombre: str
-    ubicacion: Optional[str] = None
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
