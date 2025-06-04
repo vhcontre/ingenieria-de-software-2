@@ -1,30 +1,24 @@
-from typing import Optional, List
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict, Field
+from typing import Optional
 
-class RolSchema(BaseModel):
-    id: int
-    nombre: str
-
-    class Config:
-        from_attributes = True
 
 class UsuarioBase(BaseModel):
-    username: str
-    email: Optional[EmailStr]
-    is_active: bool = True
+    username: str = Field(..., min_length=3)
+    email: EmailStr
+
 
 class UsuarioCreate(UsuarioBase):
-    password: str
+    password: str = Field(..., min_length=6)
+
 
 class UsuarioUpdate(BaseModel):
-    username: Optional[str]
-    email: Optional[EmailStr]
-    password: Optional[str]
-    is_active: Optional[bool]
+    username: Optional[str] = Field(default=None, min_length=3)
+    email: Optional[EmailStr] = None
+    password: Optional[str] = Field(default=None, min_length=6)
+    es_activo: Optional[bool] = None
 
-class UsuarioRead(UsuarioBase):
+
+class UsuarioOut(UsuarioBase):
     id: int
-    roles: List[RolSchema] = []
-
-    class Config:
-        from_attributes = True
+    es_activo: bool
+    model_config = ConfigDict(from_attributes=True)

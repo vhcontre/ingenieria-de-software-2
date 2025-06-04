@@ -1,3 +1,4 @@
+# domain/models/rol.py
 from dataclasses import dataclass
 from typing import Optional
 

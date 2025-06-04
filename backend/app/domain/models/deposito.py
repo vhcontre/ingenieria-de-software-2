@@ -1,5 +1,12 @@
+# domain/models/deposito.py
+from pydantic import BaseModel
 from typing import Optional
-from domain.models.base_model import BaseModelWithId
+
+class BaseModelWithId(BaseModel):
+    id: int
+
+    class Config:
+        orm_mode = True
 
 class Deposito(BaseModelWithId):
     nombre: str
