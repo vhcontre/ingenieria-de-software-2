@@ -1,5 +1,5 @@
 # mappers/producto_mapper.py
-from domain.models.producto import Producto
+from app.domain.models.producto import Producto
 from app.db.models.producto import ProductoORM
 
 def producto_orm_to_domain(orm: ProductoORM) -> Producto:
