@@ -1,5 +1,5 @@
 # mappers/rol_mapper.py
-from domain.models.rol import Rol
+from app.domain.models.rol import Rol
 from app.db.models.usuario import RolORM 
 
 def rol_orm_to_domain(orm: RolORM) -> Rol:

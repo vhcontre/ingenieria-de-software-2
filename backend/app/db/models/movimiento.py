@@ -1,7 +1,9 @@
+#module: app.db.models.MovimientoORM
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from enum import Enum as PyEnum
+from app.domain.models.movimiento import TipoMovimiento
 
 from app.db.models.base import EntityBase
 

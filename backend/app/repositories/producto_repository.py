@@ -16,7 +16,7 @@ class ProductoRepository:
         check_unicidad_producto(self.db, producto_in.nombre, producto_in.sku)
         
         # convertir a modelo de dominio antes de mapear a ORM
-        domain_model = Producto(id=None, nombre=producto_in.nombre, sku=producto_in.sku, descripcion=producto_in.descripcion)
+        domain_model = Producto(id=None, nombre=producto_in.nombre, sku=producto_in.sku, descripcion=producto_in.descripcion,stock=producto_in.stock or 0)
         
         orm_obj = producto_domain_to_orm(domain_model)
         self.db.add(orm_obj)
@@ -45,6 +45,8 @@ class ProductoRepository:
             producto.sku = producto_upd.sku
         if producto_upd.descripcion is not None:
             producto.descripcion = producto_upd.descripcion
+        if producto_upd.stock is not None:
+            producto.stock = producto_upd.stock
 
         self.db.commit()
         self.db.refresh(producto)

@@ -6,6 +6,7 @@ class ProductoBase(BaseModel):
     nombre: str = Field(..., min_length=1)
     sku: str = Field(..., min_length=1)
     descripcion: Optional[str] = None
+    stock: int = Field(default=0, ge=0)
 
 
 class ProductoCreate(ProductoBase):
@@ -16,6 +17,7 @@ class ProductoUpdate(BaseModel):
     nombre: Optional[str] = Field(default=None, min_length=1)
     sku: Optional[str] = Field(default=None, min_length=1)
     descripcion: Optional[str] = None
+    stock: int = Field(default=0, ge=0)
 
 
 class ProductoOut(ProductoBase):

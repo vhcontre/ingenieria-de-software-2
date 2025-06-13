@@ -9,6 +9,7 @@ class ProductoORM(EntityBase):
     nombre = Column(String, nullable=False)
     sku = Column(String, unique=True, nullable=False)
     descripcion = Column(String)
+    stock = Column(Integer, default=0, nullable=False)
 
     movimientos = relationship("MovimientoORM", back_populates="producto")
 

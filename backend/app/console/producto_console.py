@@ -8,8 +8,9 @@ def crear_producto(repo):
     nombre = input("Nombre del producto: ")
     sku = input("SKU: ")
     descripcion = input("Descripción: ")
+    stock = input("Stock inicial (dejar vacío para 0): ").strip()
     try:
-        producto_in = ProductoCreate(nombre=nombre, sku=sku, descripcion=descripcion)
+        producto_in = ProductoCreate(nombre=nombre, sku=sku, descripcion=descripcion, stock=int(stock) if stock else 0)
         producto = repo.create_producto(producto_in)
         print("Producto creado:", producto)
     except ValueError as e:
@@ -23,7 +24,7 @@ def listar_productos(repo):
 
     print("\nListado de productos:")
     for i, p in enumerate(productos, start=1):
-        print(f"{i}. [{p.id}] {p.nombre} - {p.sku} - {p.descripcion}")
+        print(f"{i}. [{p.id}] {p.nombre} - {p.sku} - {p.descripcion} - {p.stock} unidades")
 
 def listar_productos_paginado(repo, por_pagina=5):
     productos = repo.get_all_productos()
@@ -31,7 +32,7 @@ def listar_productos_paginado(repo, por_pagina=5):
         print("No hay productos registrados.")
         return
 
-    total = len(productos)
+    # total = len(productos)
     pagina = 0
 
     while True:
@@ -45,7 +46,7 @@ def listar_productos_paginado(repo, por_pagina=5):
 
         print(f"\nPágina {pagina + 1}:")
         for i, p in enumerate(bloque, start=inicio + 1):
-            print(f"{i}. [{p.id}] {p.nombre} - {p.sku} - {p.descripcion}")
+            print(f"{i}. [{p.id}] {p.nombre} - {p.sku} - {p.descripcion} - {p.stock} unidades")
 
         opcion = input("\n[Enter] para ver más, [S] para salir: ").strip().lower()
         if opcion == "s":
@@ -61,7 +62,8 @@ def actualizar_producto(repo):
     nombre = input("Nuevo nombre (dejar vacío para no cambiar): ").strip() or None
     sku = input("Nuevo SKU (dejar vacío para no cambiar): ").strip() or None
     descripcion = input("Nueva descripción (dejar vacío para no cambiar): ").strip() or None
-    producto_upd = ProductoUpdate(nombre=nombre, sku=sku, descripcion=descripcion)
+    stock = input("Nuevo stock (dejar vacío para no cambiar): ").strip() or None
+    producto_upd = ProductoUpdate(nombre=nombre, sku=sku, descripcion=descripcion, stock=int(stock) if stock else None)
     try:
         updated = repo.update_producto(id_, producto_upd)
         if updated:

@@ -1,13 +1,17 @@
+# -*- coding: utf-8 -*-
+# backend/app/schemas/movimiento.py
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
 from datetime import datetime
+from enum import Enum
+from app.domain.models.movimiento import TipoMovimiento
 
 
 class MovimientoBase(BaseModel):
     producto_id: int
     deposito_origen_id: Optional[int] = None
     deposito_destino_id: Optional[int] = None
-    tipo: str = Field(..., min_length=1)
+    tipo: TipoMovimiento 
     cantidad: int = Field(..., gt=0)
     fecha: datetime
 
@@ -17,7 +21,7 @@ class MovimientoCreate(MovimientoBase):
 
 
 class MovimientoUpdate(BaseModel):
-    tipo: Optional[str] = Field(default=None, min_length=1)
+    tipo: TipoMovimiento = Field(default=None)
     cantidad: Optional[int] = Field(default=None, gt=0)
     fecha: Optional[datetime] = None
 
