@@ -1,0 +1,85 @@
+issues:
+  - title: Crear estructura inicial del repositorio y entorno
+    body: >-
+      Configurar carpetas `app/`, `tests/`, `domain/`, y `schemas/`. 
+      Incluir entorno virtual y archivo `requirements.txt`.
+    labels: [semana-1, backend]
+    milestone: Semana 1
+
+  - title: Implementar modelo ORM de Producto
+    body: >-
+      Crear clase ProductoORM en `app/db/models/producto.py` con atributos nombre, sku, stock, etc.
+    labels: [semana-1, modelo]
+    milestone: Semana 1
+
+  - title: Crear modelo de dominio de Producto
+    body: >-
+      Crear clase `Producto` en `domain/models/producto.py` como dataclass.
+    labels: [semana-1, modelo]
+    milestone: Semana 1
+
+  - title: Implementar esquema Pydantic de Producto
+    body: >-
+      Crear `ProductoCreate`, `ProductoRead`, etc. en `app/schemas/producto.py`.
+    labels: [semana-1, modelo]
+    milestone: Semana 1
+
+  - title: Crear mappers entre Producto ORM y dominio
+    body: >-
+      Implementar funciones `producto_orm_to_domain` y `producto_domain_to_orm`.
+    labels: [semana-1, mappers]
+    milestone: Semana 1
+
+  - title: Agregar repositorio de productos
+    body: >-
+      Implementar `ProductoRepository` con métodos básicos como `add`, `get_all`.
+    labels: [semana-2, backend]
+    milestone: Semana 2
+
+  - title: Implementar consola inicial para productos
+    body: >-
+      Crear `producto_console.py` con menú para crear y listar productos.
+    labels: [semana-2, console]
+    milestone: Semana 2
+
+  - title: Validación de unicidad de nombre y SKU
+    body: >-
+      Prevenir duplicados de nombre y SKU al registrar productos.
+    labels: [semana-2, validación]
+    milestone: Semana 2
+
+  - title: Agregar paginación y numeración a listados
+    body: >-
+      Permitir al usuario elegir la cantidad de elementos por página y numerar el listado.
+    labels: [semana-2, console]
+    milestone: Semana 2
+
+  - title: Crear modelo de dominio, ORM y schema de Movimiento
+    body: >-
+      Implementar las 3 capas para la entidad Movimiento: dominio (dataclass), ORM (SQLAlchemy), esquema Pydantic.
+    labels: [semana-3, modelo]
+    milestone: Semana 3
+
+  - title: Crear mappers entre Movimiento y MovimientoORM
+    body: >-
+      Implementar funciones para convertir entre modelos de dominio y ORM.
+    labels: [semana-3, mappers]
+    milestone: Semana 3
+
+  - title: Implementar MovimientoRepository
+    body: >-
+      Agregar validaciones de negocio: ingreso, egreso, traslado y validación de stock.
+    labels: [semana-4, backend, reglas-negocio]
+    milestone: Semana 4
+
+  - title: Agregar pruebas unitarias para MovimientoRepository
+    body: >-
+      Validar ingresos, egresos, y egresos con stock insuficiente. Usar `pytest` y base de datos en memoria.
+    labels: [semana-4, test]
+    milestone: Semana 4
+
+  - title: Documentar reglas de negocio en MovimientoRepository
+    body: >-
+      Explicar casos de ingreso, egreso y traslado en docstrings y/o README.
+    labels: [semana-4, documentación]
+    milestone: Semana 4
