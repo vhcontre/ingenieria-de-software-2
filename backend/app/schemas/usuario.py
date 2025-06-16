@@ -1,3 +1,5 @@
+# This file is part of the "FastAPI + SQLAlchemy + Alembic" project.
+# file: app/schemas/usuario.py
 from pydantic import BaseModel, EmailStr, ConfigDict, Field
 from typing import Optional
 
