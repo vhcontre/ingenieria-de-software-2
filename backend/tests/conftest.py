@@ -7,7 +7,8 @@ from sqlalchemy.pool import StaticPool
 from app.db.models.base import EntityBase
 from app.db.session import get_db
 from fastapi.testclient import TestClient
-from app.main import app 
+from app.main import app
+
 
 TEST_DATABASE_URL = "sqlite:///:memory:"
 

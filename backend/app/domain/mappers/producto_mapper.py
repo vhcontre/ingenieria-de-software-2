@@ -8,7 +8,8 @@ def producto_orm_to_domain(orm: ProductoORM) -> Producto:
         nombre=orm.nombre,
         sku=orm.sku,
         descripcion=orm.descripcion,
-        stock=orm.stock
+        stock=orm.stock,
+        stock_minimo=orm.stock_minimo
     )
 
 def producto_domain_to_orm(domain: Producto) -> ProductoORM:
@@ -16,7 +17,8 @@ def producto_domain_to_orm(domain: Producto) -> ProductoORM:
         nombre=domain.nombre,
         sku=domain.sku,
         descripcion=domain.descripcion,
-        stock=domain.stock
+        stock=domain.stock,
+        stock_minimo=domain.stock_minimo
         
     )
     if domain.id is not None:

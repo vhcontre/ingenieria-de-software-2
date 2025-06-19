@@ -12,8 +12,10 @@ class DepositoUpdate(BaseModel):
     nombre: Optional[str] = Field(default=None, min_length=1)
     ubicacion: Optional[str] = None
 
+class DepositoRead(DepositoBase):
+    id: int
 class DepositoOut(DepositoBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

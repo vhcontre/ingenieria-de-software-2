@@ -9,6 +9,7 @@ class Producto:
     sku: str
     descripcion: Optional[str] = None
     stock: int = 0
+    stock_minimo: int = 0 
     def __post_init__(self):
         if not self.nombre:
             raise ValueError("El nombre del producto no puede estar vacío.")

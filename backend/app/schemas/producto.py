@@ -7,6 +7,7 @@ class ProductoBase(BaseModel):
     sku: str = Field(..., min_length=1)
     descripcion: Optional[str] = None
     stock: int = Field(default=0, ge=0)
+    stock_minimo: int = 0
 
 
 class ProductoCreate(ProductoBase):
@@ -19,6 +20,12 @@ class ProductoUpdate(BaseModel):
     descripcion: Optional[str] = None
     stock: int = Field(default=0, ge=0)
 
+class ProductoRead(BaseModel):
+    id: int
+    nombre: str
+    sku: str
+    stock: int
+    stock_minimo: int
 
 class ProductoOut(ProductoBase):
     id: int

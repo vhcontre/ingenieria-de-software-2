@@ -19,3 +19,4 @@ class Movimiento:
     cantidad: int
     fecha: datetime
     tipo: TipoMovimiento
+    timestamp: datetime
