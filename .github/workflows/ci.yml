@@ -1,42 +1,38 @@
-name: CI - Tests y Linter
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  test:
-    name: Linter + Tests
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar repositorio
-      uses: actions/checkout@v4
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
 
-    - name: Instalar Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'  # Cambiá si usás otra versión
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
-    - name: Instalar dependencias
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Instalar dependencias
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Ejecutar Ruff (linter)
-      run: |
-        ruff check app tests
+      - name: Ejecutar Ruff (linter)
+        run: |
+          cd backend
+          ruff check app tests
 
-    - name: Crear base de datos con Alembic
-      env:
-        DATABASE_URL: sqlite:///./inventario.db
-      run: |
-        alembic upgrade head
-
-    - name: Ejecutar Tests con Pytest
-      env:
-        DATABASE_URL: sqlite:///./inventario.db
-      run: |
-        pytest -v tests/
+      - name: Ejecutar tests con Pytest
+        env:
+          DATABASE_URL: sqlite:///./inventario.db
+        run: |
+          cd backend
+          pytest -v
