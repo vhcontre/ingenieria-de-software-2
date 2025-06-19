@@ -14,6 +14,3 @@ class ProductoORM(EntityBase):
 
 
     movimientos = relationship("MovimientoORM", back_populates="producto")
-
-# Importación al final para evitar dependencias circulares
-from .movimiento import MovimientoORM

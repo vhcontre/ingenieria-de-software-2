@@ -1,5 +1,5 @@
 #file: backend/app/routers/productos.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from app.schemas.producto import ProductoCreate, ProductoRead
 from app.db.session import get_db
 from sqlalchemy.orm import Session

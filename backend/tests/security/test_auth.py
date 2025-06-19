@@ -1,7 +1,6 @@
 from app.security.auth import obtener_password_hash
 from app.db.models.usuario import UsuarioORM
 from app.db.models.rol import RolORM
-from fastapi.testclient import TestClient
 
 # 🔧 Crear usuario admin para pruebas
 def crear_usuario_admin(db):

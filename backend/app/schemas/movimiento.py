@@ -3,7 +3,6 @@
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
 from datetime import datetime
-from enum import Enum
 from app.domain.models.movimiento import TipoMovimiento
 
 

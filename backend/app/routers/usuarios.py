@@ -1,5 +1,5 @@
 #file: backend/app/routers/usuarios.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.schemas.usuario import UsuarioCreate, UsuarioRead
 from app.db.session import get_db

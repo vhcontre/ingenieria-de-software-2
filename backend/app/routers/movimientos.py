@@ -1,5 +1,5 @@
 #file: backend/app/routers/movimientos.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.schemas.movimiento import MovimientoCreate, MovimientoRead
 from app.db.session import get_db

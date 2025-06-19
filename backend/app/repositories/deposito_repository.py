@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.models.deposito import DepositoORM
 from app.domain.models.deposito import Deposito
 from app.schemas.deposito import DepositoCreate, DepositoUpdate
-from app.domain.mappers.deposito_mapper import deposito_orm_to_domain, deposito_domain_to_orm
+from app.domain.mappers.deposito_mapper import deposito_orm_to_domain
 
 
 class DepositoRepository:

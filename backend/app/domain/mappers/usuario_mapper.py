@@ -1,7 +1,5 @@
 # mappers/usuario_mapper.py
-from typing import List
 from app.domain.models.usuario import Usuario
-from domain.models.rol import Rol
 from app.db.models.usuario import UsuarioORM
 from mappers.rol_mapper import rol_orm_to_domain, rol_domain_to_orm
 

@@ -2,15 +2,14 @@
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from enum import Enum as PyEnum
 from app.domain.models.movimiento import TipoMovimiento
 
 from app.db.models.base import EntityBase
 
-class TipoMovimiento(PyEnum):
-    ingreso = "ingreso"
-    egreso = "egreso"
-    traslado = "traslado"
+# class TipoMovimiento(PyEnum):
+#     ingreso = "ingreso"
+#     egreso = "egreso"
+#     traslado = "traslado"
 
 class MovimientoORM(EntityBase):
     __tablename__ = "movimientos"
@@ -27,8 +26,3 @@ class MovimientoORM(EntityBase):
     deposito_origen = relationship("DepositoORM", foreign_keys=[deposito_origen_id], back_populates="movimientos_origen")
     deposito_destino = relationship("DepositoORM", foreign_keys=[deposito_destino_id], back_populates="movimientos_destino")
     usuario = relationship("UsuarioORM")
-
-# Al final del archivo movimiento.py
-from .producto import ProductoORM
-from .usuario import UsuarioORM
-from .deposito import DepositoORM

@@ -1,5 +1,5 @@
 # file: app/db/models/usuario.py
-from sqlalchemy import Column, Integer, String, Boolean, Table, ForeignKey
+from sqlalchemy import Column, String, Boolean, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.models.base import EntityBase
 
@@ -21,4 +21,3 @@ class UsuarioORM(EntityBase):
 
     roles = relationship("RolORM", secondary=usuario_rol, back_populates="usuarios")
 
-from .rol import RolORM

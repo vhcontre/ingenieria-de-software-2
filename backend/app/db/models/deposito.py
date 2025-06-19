@@ -1,5 +1,5 @@
 # app/db/models/deposito.py
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from app.db.models.base import EntityBase
 
@@ -11,6 +11,3 @@ class DepositoORM(EntityBase):
 
     movimientos_origen = relationship("MovimientoORM", foreign_keys="[MovimientoORM.deposito_origen_id]", back_populates="deposito_origen")
     movimientos_destino = relationship("MovimientoORM", foreign_keys="[MovimientoORM.deposito_destino_id]", back_populates="deposito_destino")
-
-# Importación al final para evitar dependencias circulares
-from .movimiento import MovimientoORM

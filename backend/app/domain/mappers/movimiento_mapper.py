@@ -1,6 +1,6 @@
 #file: backend/app/domain/mappers/movimiento_mapper.py
 from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTipoMovimiento
-from app.db.models.movimiento import MovimientoORM, TipoMovimiento as ORMTipoMovimiento
+from app.db.models.movimiento import MovimientoORM
 
 def movimiento_orm_to_domain(orm: MovimientoORM) -> Movimiento:
     return Movimiento(
