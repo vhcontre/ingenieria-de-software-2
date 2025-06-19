@@ -32,6 +32,7 @@ jobs:
 
       - name: Ejecutar tests con Pytest
         env:
+          PYTHONPATH: ./backend
           DATABASE_URL: sqlite:///./inventario.db
         run: |
           cd backend
