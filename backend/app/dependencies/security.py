@@ -11,7 +11,7 @@ from app.security.auth import SECRET_KEY, ALGORITHM
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
-def obtener_usuario_actual(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> UsuarioORM:
+def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> UsuarioORM:
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
@@ -27,7 +27,7 @@ def obtener_usuario_actual(token: str = Depends(oauth2_scheme), db: Session = De
 
 
 def usuario_actual_con_rol(rol_requerido: str):
-    def dependencia(usuario: UsuarioORM = Depends(obtener_usuario_actual)):
+    def dependencia(usuario: UsuarioORM = Depends(get_current_user)):
         roles = [rol.nombre for rol in usuario.roles]
         if rol_requerido not in roles:
             raise HTTPException(

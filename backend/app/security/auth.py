@@ -23,7 +23,7 @@ def verificar_password(plain_password, hashed_password):
 def obtener_password_hash(password):
     return pwd_context.hash(password)
 
-def autenticar_usuario(db: Session, username: str, password: str):
+def __autenticar_usuario__(db: Session, username: str, password: str):
     usuario = db.query(UsuarioORM).filter(UsuarioORM.username == username).first()
     if not usuario:
         return None
@@ -31,7 +31,15 @@ def autenticar_usuario(db: Session, username: str, password: str):
         return None
     return usuario
 
-def crear_token_acceso(data: dict, expires_delta: timedelta | None = None):
+def authenticate_user(db: Session, username: str, password: str):
+    usuario = db.query(UsuarioORM).filter(UsuarioORM.username == username).first()
+    if not usuario:
+        return None
+    if not verificar_password(password, usuario.hashed_password):
+        return None
+    return usuario
+
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     to_encode.update({"exp": expire})

@@ -24,3 +24,6 @@ class UsuarioOut(UsuarioBase):
     id: int
     es_activo: bool
     model_config = ConfigDict(from_attributes=True)
+
+# Agrega esto al final del archivo:
+UsuarioRead = UsuarioOut

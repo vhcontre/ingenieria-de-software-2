@@ -9,6 +9,15 @@ class ProductoBase(BaseModel):
     stock: int = Field(default=0, ge=0)
     stock_minimo: int = 0
 
+    model_config = ConfigDict(json_schema_extra={
+        "example": {
+            "nombre": "Café",
+            "sku": "CAFE123",
+            "stock": 0,
+            "stock_minimo": 10
+        }
+    })
+
 
 class ProductoCreate(ProductoBase):
     pass

@@ -1,25 +1,65 @@
-from fastapi import APIRouter, Depends
-from app.db.models.usuario import UsuarioORM
-from app.security.auth import obtener_usuario_actual
-from app.security.roles import validar_rol
+#file: backend/app/routers/usuarios.py
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from app.schemas.usuario import UsuarioCreate, UsuarioRead
+from app.db.session import get_db
+from app.repositories.usuario_repository import UsuarioRepository
+from app.dependencies.security import get_current_user
 
-router = APIRouter(prefix="/usuarios", tags=["usuarios"])
+router = APIRouter()
 
-# Endpoint para usuario autenticado (cualquiera)
-@router.get("/me")
-def leer_usuario_actual(usuario: UsuarioORM = Depends(obtener_usuario_actual)):
-    return {
-        "username": usuario.username,
-        "email": usuario.email,
-        "roles": [rol.nombre for rol in usuario.roles]
-    }
+@router.post(
+    "/",
+    response_model=UsuarioRead,
+    status_code=201,
+    summary="Crear un nuevo usuario",
+    description="Crea un usuario en el sistema. Requiere autenticación.",
+    responses={
+        201: {"description": "Usuario creado exitosamente"},
+        400: {"description": "Datos inválidos"},
+        401: {"description": "No autenticado"},
+    },
+    tags=["Usuarios"],
+)
+def crear_usuario_endpoint(
+    usuario: UsuarioCreate,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """
+    Crea un nuevo usuario.
 
-# Endpoint solo para admin
-@router.get("/admin-only", dependencies=[Depends(validar_rol("admin"))])
-def datos_admin():
-    return {"mensaje": "Acceso solo para usuarios con rol admin"}
+    - **username**: Nombre de usuario.
+    - **password**: Contraseña.
+    - **roles**: Lista de roles asignados al usuario.
+    """
+    repo = UsuarioRepository(db)
+    return repo.create_usuario(usuario)
 
-# Endpoint solo para operador
-@router.get("/operador-only", dependencies=[Depends(validar_rol("operador"))])
-def datos_operador():
-    return {"mensaje": "Acceso solo para usuarios con rol operador"}
+@router.get(
+    "/{usuario_id}",
+    response_model=UsuarioRead,
+    summary="Obtener un usuario por ID",
+    description="Devuelve la información de un usuario específico dado su ID. Requiere autenticación.",
+    responses={
+        200: {"description": "Usuario encontrado"},
+        404: {"description": "Usuario no encontrado"},
+        401: {"description": "No autenticado"},
+    },
+    tags=["Usuarios"],
+)
+def obtener_usuario(
+    usuario_id: int,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """
+    Recupera un usuario por su ID.
+
+    - **usuario_id**: ID del usuario a buscar.
+    """
+    repo = UsuarioRepository(db)
+    usuario = repo.get_usuario_by_id(usuario_id)
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+    return usuario
