@@ -7,33 +7,29 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}/backend
+
     steps:
-      - name: Checkout del repositorio
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Configurar Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: 3.11
 
-      - name: Instalar dependencias
+      - name: Install dependencies
         run: |
-          cd backend
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r backend/requirements.txt
+          pip install ruff pytest pytest-anyio
 
-      - name: Ejecutar Ruff (linter)
-        run: |
-          cd backend
-          ruff check app tests
+      - name: Run linter
+        run: ruff check backend tests
 
-      - name: Ejecutar tests con Pytest
-        env:
-          PYTHONPATH: ./backend
-          DATABASE_URL: sqlite:///./inventario.db
-        run: |
-          cd backend
-          pytest -v
+      - name: Run tests
+        run: pytest -v backend/tests
