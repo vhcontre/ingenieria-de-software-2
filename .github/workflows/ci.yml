@@ -32,5 +32,8 @@ jobs:
         run: |
           ruff check .
 
-      - name: Run tests
-        run: pytest -v backend/tests
+      - name: Ejecutar tests con pytest
+        working-directory: backend
+        run: |
+          PYTHONPATH=. pytest -v tests
+
