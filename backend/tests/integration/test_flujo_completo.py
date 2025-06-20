@@ -43,7 +43,7 @@ def test_flujo_completo(client, db_session):
     assert resp_entrada.status_code == 201
 
     print("➖ Registrando salida de stock...")
-    # salida_data = {"tipo": "egreso", "cantidad": 5, "producto_id": producto_id, "deposito_id": deposito_id}
+    
     salida_data = {
         "tipo": "egreso",
         "fecha": datetime.now(timezone.utc).isoformat(),
