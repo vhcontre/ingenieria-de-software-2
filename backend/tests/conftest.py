@@ -7,6 +7,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.db.models.base import EntityBase
+from app.db.models.usuario import UsuarioORM, usuario_rol
+from app.db.models.rol import RolORM
+
 from app.db.session import get_db
 from fastapi.testclient import TestClient
 from app.main import app

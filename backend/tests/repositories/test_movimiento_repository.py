@@ -5,6 +5,8 @@ from datetime import datetime
 
 from app.db.models.base import EntityBase
 from app.db.models.producto import ProductoORM
+from app.db.models.usuario import UsuarioORM, usuario_rol
+from app.db.models.rol import RolORM
 from app.repositories.movimiento_repository import MovimientoRepository
 from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTipoMovimiento
 
@@ -130,15 +132,14 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
         tipo=DomainTipoMovimiento.egreso,
         timestamp=fecha_actual
     )
-    repo.create_movimiento(mov1)
-    repo.create_movimiento(mov2)
 
     try:
+        repo.create_movimiento(mov1)
+        repo.create_movimiento(mov2)
         movimientos = repo.get_by_producto(producto.id)
         assert movimientos is not None, "No se encontraron movimientos"
+        assert len(movimientos) == 2
+        assert all(m.producto_id == producto.id for m in movimientos)
     except Exception:
-        db_session.rollback()  # limpia estado fallido
+        db_session.rollback()
         raise
-    
-    assert len(movimientos) == 2
-    assert all(m.producto_id == producto.id for m in movimientos)

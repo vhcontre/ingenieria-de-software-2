@@ -19,5 +19,5 @@ class UsuarioORM(EntityBase):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    roles = relationship("RolORM", secondary=usuario_rol, back_populates="usuarios")
+    roles = relationship("RolORM", secondary="usuario_rol", back_populates="usuarios")
 

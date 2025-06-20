@@ -8,4 +8,4 @@ class RolORM(EntityBase):
 
     nombre = Column(String, unique=True, nullable=False)
 
-    usuarios = relationship("UsuarioORM", secondary=usuario_rol, back_populates="roles")
+    usuarios = relationship("UsuarioORM", secondary="usuario_rol", back_populates="roles")
