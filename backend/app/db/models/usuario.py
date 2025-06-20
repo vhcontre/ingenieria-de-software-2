@@ -8,7 +8,8 @@ usuario_rol = Table(
     "usuario_rol",
     EntityBase.metadata,
     Column("usuario_id", ForeignKey("usuarios.id"), primary_key=True),
-    Column("rol_id", ForeignKey("roles.id"), primary_key=True)
+    Column("rol_id", ForeignKey("roles.id"), primary_key=True),
+    extend_existing=True
 )
 
 class UsuarioORM(EntityBase):
