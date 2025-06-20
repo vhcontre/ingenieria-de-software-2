@@ -1,26 +1,30 @@
-import traceback
 import pytest
+from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from datetime import datetime
 
 from app.db.models.base import EntityBase
 from app.db.models.producto import ProductoORM
+from app.db.models.usuario import UsuarioORM
+from app.db.models.deposito import DepositoORM
 from app.repositories.movimiento_repository import MovimientoRepository
 from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTipoMovimiento
 
-# Configurar engine y sesión en memoria
-engine = create_engine("sqlite:///:memory:", echo=False)
-TestingSessionLocal = sessionmaker(bind=engine)
-
+# Configuración de la base de datos en memoria
 @pytest.fixture(scope="module")
-def db_session():
-    # Crear tablas en memoria
+def engine():
+    engine = create_engine("sqlite:///:memory:", echo=False)
     EntityBase.metadata.create_all(bind=engine)
-    session = TestingSessionLocal()
-    yield session
-    session.close()
+    yield engine
     EntityBase.metadata.drop_all(bind=engine)
+
+@pytest.fixture
+def db_session(engine):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    yield session
+    session.rollback()  # Hacemos rollback en lugar de close para mantener la transacción
+    session.close()
 
 @pytest.fixture
 def repo(db_session):
@@ -30,116 +34,139 @@ def repo(db_session):
 def fecha_actual():
     return datetime.utcnow()
 
-def test_ingreso_exitoso(repo, db_session, fecha_actual):
-    # Insertar un producto con stock 10
+@pytest.fixture
+def usuario_prueba(db_session):
+    usuario = UsuarioORM(id=1, username="test_user", email="test@example.com", hashed_password="hashed_pw")
+    db_session.add(usuario)
+    db_session.commit()
+    return usuario
+
+@pytest.fixture
+def deposito_prueba(db_session):
+    deposito = DepositoORM(id=1, nombre="Depósito Central")
+    db_session.add(deposito)
+    db_session.commit()
+    return deposito
+
+@pytest.fixture
+def producto_con_stock(db_session):
     producto = ProductoORM(nombre="Producto Test", sku="SKU123", stock=10)
     db_session.add(producto)
     db_session.commit()
-    db_session.refresh(producto)
+    return producto
 
+def test_ingreso_exitoso(repo, db_session, producto_con_stock, usuario_prueba, deposito_prueba, fecha_actual):
+    # Configuración del movimiento
     movimiento = Movimiento(
-        id=None,
-        producto_id=producto.id,
+        producto_id=producto_con_stock.id,
         deposito_origen_id=None,
-        deposito_destino_id=1,
-        usuario_id=1,
+        deposito_destino_id=deposito_prueba.id,
+        usuario_id=usuario_prueba.id,
         cantidad=5,
         fecha=fecha_actual,
         tipo=DomainTipoMovimiento.ingreso,
         timestamp=fecha_actual
     )
 
+    # Ejecución
     movimiento_creado = repo.create_movimiento(movimiento)
-    db_session.refresh(producto)
+    db_session.refresh(producto_con_stock)
 
+    # Aserciones
+    assert movimiento_creado.id is not None
     assert movimiento_creado.cantidad == 5
-    assert producto.stock == 15  # 10 + 5
+    assert producto_con_stock.stock == 15  # Verifica que el stock se actualizó correctamente
+    assert movimiento_creado.tipo == DomainTipoMovimiento.ingreso
 
-def test_egreso_exitoso(repo, db_session, fecha_actual):
+def test_egreso_exitoso(repo, db_session, usuario_prueba, deposito_prueba, fecha_actual):
+    # Configuración
     producto = ProductoORM(nombre="Producto Egreso", sku="SKU124", stock=20)
     db_session.add(producto)
     db_session.commit()
-    db_session.refresh(producto)
 
     movimiento = Movimiento(
-        id=None,
         producto_id=producto.id,
-        deposito_origen_id=1,
+        deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,
-        usuario_id=1,
+        usuario_id=usuario_prueba.id,
         cantidad=8,
         fecha=fecha_actual,
         tipo=DomainTipoMovimiento.egreso,
         timestamp=fecha_actual
     )
 
+    # Ejecución
     movimiento_creado = repo.create_movimiento(movimiento)
     db_session.refresh(producto)
 
+    # Aserciones
     assert movimiento_creado.cantidad == 8
-    assert producto.stock == 12  # 20 - 8
+    assert producto.stock == 12
+    assert movimiento_creado.tipo == DomainTipoMovimiento.egreso
 
-def test_egreso_stock_insuficiente(repo, db_session, fecha_actual):
+def test_egreso_stock_insuficiente(repo, db_session, usuario_prueba, deposito_prueba, fecha_actual):
+    # Configuración
     producto = ProductoORM(nombre="Producto Insuficiente", sku="SKU125", stock=3)
     db_session.add(producto)
     db_session.commit()
-    db_session.refresh(producto)
 
     movimiento = Movimiento(
-        id=None,
         producto_id=producto.id,
-        deposito_origen_id=1,
+        deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,
-        usuario_id=1,
+        usuario_id=usuario_prueba.id,
         cantidad=5,
         fecha=fecha_actual,
         tipo=DomainTipoMovimiento.egreso,
         timestamp=fecha_actual
     )
 
+    # Ejecución y verificación de excepción
     with pytest.raises(ValueError) as excinfo:
         repo.create_movimiento(movimiento)
+    
+    # Aserciones
     assert "Stock insuficiente" in str(excinfo.value)
-
-def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
-    producto = ProductoORM(nombre="Producto Listado", sku="SKU126", stock=10)
-    db_session.add(producto)
-    db_session.commit()
     db_session.refresh(producto)
+    assert producto.stock == 3  # El stock no debe haber cambiado
 
-    mov1 = Movimiento(
-        id=None,
-        producto_id=producto.id,
+def test_listado_movimientos_por_producto(repo, db_session, producto_con_stock, usuario_prueba, deposito_prueba, fecha_actual):
+    # Configuración de movimientos
+    mov_ingreso = Movimiento(
+        producto_id=producto_con_stock.id,
         deposito_origen_id=None,
-        deposito_destino_id=1,
-        usuario_id=1,
+        deposito_destino_id=deposito_prueba.id,
+        usuario_id=usuario_prueba.id,
         cantidad=3,
         fecha=fecha_actual,
         tipo=DomainTipoMovimiento.ingreso,
         timestamp=fecha_actual
     )
-    mov2 = Movimiento(
-        id=None,
-        producto_id=producto.id,
-        deposito_origen_id=1,
+    
+    mov_egreso = Movimiento(
+        producto_id=producto_con_stock.id,
+        deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,
-        usuario_id=1,
+        usuario_id=usuario_prueba.id,
         cantidad=2,
         fecha=fecha_actual,
         tipo=DomainTipoMovimiento.egreso,
         timestamp=fecha_actual
     )
 
-    try:
-        repo.create_movimiento(mov1)
-        repo.create_movimiento(mov2)
-        movimientos = repo.get_by_producto(producto.id)
-        assert movimientos is not None, "No se encontraron movimientos"
-        assert len(movimientos) == 2
-        assert all(m.producto_id == producto.id for m in movimientos)
-    except Exception as e:        
-        print("Error en test_listado_movimientos_por_producto:", e)
-        traceback.print_exc()
-        raise
-    finally:
-        db_session.rollback()
+    # Ejecución
+    repo.create_movimiento(mov_ingreso)
+    repo.create_movimiento(mov_egreso)
+    
+    # Obtención de resultados
+    movimientos = repo.get_by_producto(producto_con_stock.id)
+    
+    # Aserciones
+    assert movimientos is not None
+    assert len(movimientos) == 2
+    assert all(m.producto_id == producto_con_stock.id for m in movimientos)
+    
+    # Verificación adicional de tipos de movimiento
+    tipos = {m.tipo for m in movimientos}
+    assert DomainTipoMovimiento.ingreso in tipos
+    assert DomainTipoMovimiento.egreso in tipos
