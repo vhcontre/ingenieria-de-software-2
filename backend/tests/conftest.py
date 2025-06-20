@@ -39,14 +39,13 @@ def setup_test_db():
 # Fixture para generar una sesión de DB nueva en cada test
 @pytest.fixture
 def db_session():
-    session = TestingSessionLocal()
-    try:
-        yield session
-    finally:
-        session.rollback()  # Limpieza post test
-        session.close()
-
-
+    engine = create_engine("sqlite:///:memory:")
+    EntityBase.metadata.drop_all(bind=engine)   # <--- Agrega esta línea
+    EntityBase.metadata.create_all(bind=engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    yield session
+    session.close()
 
 #Cliente de FastAPI con base de datos sobreescrita para usar tests aislados
 @pytest.fixture()
@@ -62,15 +61,6 @@ def client():
 
     with TestClient(app) as c:
         yield c
-
-# @pytest.fixture
-# def client(db_session):
-#     def override_get_db():
-#         yield db_session
-
-#     app.dependency_overrides[get_db] = override_get_db
-#     yield TestClient(app)
-#     app.dependency_overrides.clear()
 
 @pytest.fixture
 def crear_usuario_admin(db_session):
