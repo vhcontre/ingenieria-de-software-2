@@ -30,11 +30,13 @@ engine_test = create_engine(
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine_test)
 
 # Crear y eliminar las tablas una sola vez por sesión de tests
-@pytest.fixture(scope="session", autouse=True)
-def setup_test_db():
-    EntityBase.metadata.create_all(bind=engine_test)
+@pytest.fixture(scope='function', autouse=True)
+def setup_database():
+    engine = create_engine("sqlite:///:memory:")  # or your test db URI
+    EntityBase.metadata.drop_all(engine)
+    EntityBase.metadata.create_all(engine)
     yield
-    EntityBase.metadata.drop_all(bind=engine_test)
+    EntityBase.metadata.drop_all(engine)
 
 # Fixture para generar una sesión de DB nueva en cada test
 @pytest.fixture
