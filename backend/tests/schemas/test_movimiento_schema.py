@@ -11,7 +11,8 @@ def test_movimiento_create_valido():
         "deposito_destino_id": 2,
         "tipo": "entrada",
         "cantidad": 10,
-        "fecha": datetime.now()
+        "fecha": datetime.now(),
+        "timestamp": datetime.now()
     }
     movimiento = MovimientoCreate(**data)
     assert movimiento.tipo == "entrada"
@@ -24,7 +25,8 @@ def test_movimiento_create_cantidad_invalida():
         "deposito_destino_id": 2,
         "tipo": "salida",
         "cantidad": 0,
-        "fecha": datetime.now()
+        "fecha": datetime.now(),
+        "timestamp": datetime.now()
     }
     with pytest.raises(ValidationError):
         MovimientoCreate(**data)
@@ -36,7 +38,8 @@ def test_movimiento_create_tipo_vacio():
         "deposito_destino_id": 2,
         "tipo": "",
         "cantidad": 5,
-        "fecha": datetime.now()
+        "fecha": datetime.now(),
+        "timestamp": datetime.now()
     }
     with pytest.raises(ValidationError):
         MovimientoCreate(**data)
@@ -45,10 +48,11 @@ def test_movimiento_create_tipo_vacio():
 def test_movimiento_update_valido():
     data = {
         "tipo": "traslado",
-        "cantidad": 15
+        "cantidad": 15,
+        "timestamp": datetime.now()
     }
     movimiento = MovimientoUpdate(**data)
-    assert movimiento.tipo == "traslado"
+    assert movimiento.tipo.value == "traslado"
     assert movimiento.cantidad == 15
 
 
@@ -67,6 +71,7 @@ def test_movimiento_out_from_orm():
             self.tipo = tipo
             self.cantidad = cantidad
             self.fecha = fecha
+            self.timestamp=datetime.now()
 
     dummy = DummyMovimiento(1, 1, None, 2, "entrada", 20, datetime.now())
     out = MovimientoOut.model_validate(dummy)

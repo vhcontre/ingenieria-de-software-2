@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Optional
 
-class TipoMovimiento(Enum):
+class TipoMovimiento(str, Enum):
     ingreso = "ingreso"
     egreso = "egreso"
     traslado = "traslado"
