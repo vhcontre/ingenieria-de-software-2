@@ -5,8 +5,6 @@ from datetime import datetime
 
 from app.db.models.base import EntityBase
 from app.db.models.producto import ProductoORM
-from app.db.models.usuario import UsuarioORM, usuario_rol
-from app.db.models.rol import RolORM
 from app.repositories.movimiento_repository import MovimientoRepository
 from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTipoMovimiento
 

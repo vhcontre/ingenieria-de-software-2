@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
-from app.db.models.usuario import UsuarioORM, usuario_rol
+from app.db.models.usuario import UsuarioORM
 from app.db.models.rol import RolORM
 from app.security.auth import obtener_password_hash
 

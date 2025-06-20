@@ -1,7 +1,5 @@
 from app.db.engine import engine
 from app.db.models.base import EntityBase
-from app.db.models.usuario import UsuarioORM, usuario_rol
-from app.db.models.rol import RolORM
 
 # Importá todos los modelos para que SQLAlchemy los registre y cree las tablas
 

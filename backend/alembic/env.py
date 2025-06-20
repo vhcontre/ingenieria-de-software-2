@@ -6,11 +6,6 @@ from sqlalchemy import pool
 
 from alembic import context
 from app.db.models.base import EntityBase
-from app.db.models.usuario import UsuarioORM, usuario_rol
-from app.db.models.rol import RolORM
-from app.db.models.producto import ProductoORM
-from app.db.models.deposito import DepositoORM
-from app.db.models.movimiento import MovimientoORM
 
 
 

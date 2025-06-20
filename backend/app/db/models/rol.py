@@ -1,7 +1,6 @@
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from app.db.models.base import EntityBase
-from .usuario import usuario_rol  # Importa la tabla intermedia
 
 class RolORM(EntityBase):
     __tablename__ = "roles"
