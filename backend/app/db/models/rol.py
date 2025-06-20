@@ -4,6 +4,7 @@ from app.db.models.base import EntityBase
 
 class RolORM(EntityBase):
     __tablename__ = "roles"
+    __table_args__ = {'extend_existing': True}
 
     nombre = Column(String, unique=True, nullable=False)
 
