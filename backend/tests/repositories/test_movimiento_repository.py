@@ -1,3 +1,4 @@
+import uuid
 import pytest
 from datetime import datetime
 from sqlalchemy import create_engine
@@ -36,21 +37,22 @@ def fecha_actual():
 
 @pytest.fixture
 def usuario_prueba(db_session):
-    usuario = UsuarioORM(id=1, username="test_user", email="test@example.com", hashed_password="hashed_pw")
+    usuario = UsuarioORM(username="test_user", email="test@example.com", hashed_password="hashed_pw")
     db_session.add(usuario)
     db_session.commit()
     return usuario
 
 @pytest.fixture
 def deposito_prueba(db_session):
-    deposito = DepositoORM(id=1, nombre="Depósito Central")
+    deposito = DepositoORM(nombre="Depósito Central", ubicacion="Calle Olivos 7123")
     db_session.add(deposito)
     db_session.commit()
     return deposito
 
 @pytest.fixture
 def producto_con_stock(db_session):
-    producto = ProductoORM(nombre="Producto Test", sku="SKU123", stock=10)
+    sku = f"SKU-{uuid.uuid4().hex[:8]}"
+    producto = ProductoORM(nombre="Producto Test", sku=sku, stock=10)
     db_session.add(producto)
     db_session.commit()
     return producto
@@ -58,6 +60,7 @@ def producto_con_stock(db_session):
 def test_ingreso_exitoso(repo, db_session, producto_con_stock, usuario_prueba, deposito_prueba, fecha_actual):
     # Configuración del movimiento
     movimiento = Movimiento(
+        id=None,
         producto_id=producto_con_stock.id,
         deposito_origen_id=None,
         deposito_destino_id=deposito_prueba.id,
@@ -80,11 +83,13 @@ def test_ingreso_exitoso(repo, db_session, producto_con_stock, usuario_prueba, d
 
 def test_egreso_exitoso(repo, db_session, usuario_prueba, deposito_prueba, fecha_actual):
     # Configuración
-    producto = ProductoORM(nombre="Producto Egreso", sku="SKU124", stock=20)
+    sku = f"SKU-{uuid.uuid4().hex[:8]}"
+    producto = ProductoORM(nombre="Producto Egreso", sku=sku, stock=20)
     db_session.add(producto)
     db_session.commit()
 
     movimiento = Movimiento(
+        id=None,
         producto_id=producto.id,
         deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,
@@ -106,11 +111,13 @@ def test_egreso_exitoso(repo, db_session, usuario_prueba, deposito_prueba, fecha
 
 def test_egreso_stock_insuficiente(repo, db_session, usuario_prueba, deposito_prueba, fecha_actual):
     # Configuración
-    producto = ProductoORM(nombre="Producto Insuficiente", sku="SKU125", stock=3)
+    sku = f"SKU-{uuid.uuid4().hex[:8]}"
+    producto = ProductoORM(nombre="Producto Insuficiente", sku=sku, stock=3)
     db_session.add(producto)
     db_session.commit()
 
     movimiento = Movimiento(
+        id=None,
         producto_id=producto.id,
         deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,
@@ -133,6 +140,7 @@ def test_egreso_stock_insuficiente(repo, db_session, usuario_prueba, deposito_pr
 def test_listado_movimientos_por_producto(repo, db_session, producto_con_stock, usuario_prueba, deposito_prueba, fecha_actual):
     # Configuración de movimientos
     mov_ingreso = Movimiento(
+        id=None,
         producto_id=producto_con_stock.id,
         deposito_origen_id=None,
         deposito_destino_id=deposito_prueba.id,
@@ -144,6 +152,7 @@ def test_listado_movimientos_por_producto(repo, db_session, producto_con_stock, 
     )
     
     mov_egreso = Movimiento(
+        id=None,
         producto_id=producto_con_stock.id,
         deposito_origen_id=deposito_prueba.id,
         deposito_destino_id=None,

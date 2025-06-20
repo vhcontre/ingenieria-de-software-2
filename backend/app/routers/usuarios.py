@@ -8,6 +8,23 @@ from app.dependencies.security import get_current_user
 
 router = APIRouter()
 
+@router.get(
+    "/me",
+    response_model=UsuarioRead,
+    summary="Obtener el usuario autenticado",
+    description="Devuelve la información del usuario autenticado. Requiere autenticación.",
+    responses={
+        200: {"description": "Usuario autenticado"},
+        401: {"description": "No autenticado"},
+    },
+    tags=["Usuarios"],
+)
+def obtener_usuario_actual(current_user=Depends(get_current_user)):
+    """
+    Devuelve la información del usuario autenticado.
+    """
+    return current_user
+
 @router.post(
     "/",
     response_model=UsuarioRead,
@@ -64,19 +81,3 @@ def obtener_usuario(
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     return usuario
 
-@router.get(
-    "/me",
-    response_model=UsuarioRead,
-    summary="Obtener el usuario autenticado",
-    description="Devuelve la información del usuario autenticado. Requiere autenticación.",
-    responses={
-        200: {"description": "Usuario autenticado"},
-        401: {"description": "No autenticado"},
-    },
-    tags=["Usuarios"],
-)
-def obtener_usuario_actual(current_user=Depends(get_current_user)):
-    """
-    Devuelve la información del usuario autenticado.
-    """
-    return current_user
