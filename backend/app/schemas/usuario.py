@@ -22,8 +22,7 @@ class UsuarioUpdate(BaseModel):
 
 class UsuarioOut(UsuarioBase):
     id: int
-    es_activo: bool
-    model_config = ConfigDict(from_attributes=True)
+    es_activo: bool = Field(..., alias="is_active")
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
-# Agrega esto al final del archivo:
 UsuarioRead = UsuarioOut

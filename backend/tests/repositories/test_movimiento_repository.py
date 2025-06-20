@@ -37,7 +37,8 @@ def fecha_actual():
 
 @pytest.fixture
 def usuario_prueba(db_session):
-    usuario = UsuarioORM(username="test_user", email="test@example.com", hashed_password="hashed_pw")
+    unique = uuid.uuid4().hex[:8]
+    usuario = UsuarioORM(username=f"test_user_{unique}", email=f"test_{unique}@example.com",hashed_password="hashed_pw")
     db_session.add(usuario)
     db_session.commit()
     return usuario
