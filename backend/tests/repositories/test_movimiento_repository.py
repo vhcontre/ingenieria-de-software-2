@@ -133,6 +133,11 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
     repo.create_movimiento(mov1)
     repo.create_movimiento(mov2)
 
-    movimientos = repo.get_by_producto(producto.id)
+    try:
+        movimientos = repo.get_by_producto(producto.id)
+    except Exception:
+        db_session.rollback()  # limpia estado fallido
+        raise
+    
     assert len(movimientos) == 2
     assert all(m.producto_id == producto.id for m in movimientos)

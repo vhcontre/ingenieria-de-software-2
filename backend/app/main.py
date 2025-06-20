@@ -45,6 +45,7 @@ app.include_router(movimientos.router, prefix="/movimientos", tags=["Movimientos
 app.include_router(admin.router, prefix="/admin", tags=["Administración"])
 
 
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema

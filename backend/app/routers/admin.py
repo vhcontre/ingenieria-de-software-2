@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Depends
 from app.dependencies.security import usuario_actual_con_rol
 
-router = APIRouter(prefix="/admin", tags=["admin"])
+router = APIRouter(prefix="/admin", tags=["Administración"])
 
 @router.get("/zona-segura")
 def solo_admin(user = Depends(usuario_actual_con_rol("admin"))):
