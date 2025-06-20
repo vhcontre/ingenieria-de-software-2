@@ -5,6 +5,7 @@ from app.db.models.base import EntityBase
 
 class ProductoORM(EntityBase):
     __tablename__ = "productos"
+    __table_args__ = {'extend_existing': True}
     
     nombre = Column(String, nullable=False)
     sku = Column(String, unique=True, nullable=False)

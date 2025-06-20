@@ -5,6 +5,7 @@ from app.db.models.base import EntityBase
 
 class DepositoORM(EntityBase):
     __tablename__ = "depositos"
+    __table_args__ = {'extend_existing': True}
     
     nombre = Column(String, nullable=False)
     ubicacion = Column(String)

@@ -13,6 +13,7 @@ from app.db.models.base import EntityBase
 
 class MovimientoORM(EntityBase):
     __tablename__ = "movimientos"
+    __table_args__ = {'extend_existing': True}
     
     producto_id = Column(Integer, ForeignKey("productos.id"), nullable=False)
     deposito_origen_id = Column(Integer, ForeignKey("depositos.id"), nullable=True)
