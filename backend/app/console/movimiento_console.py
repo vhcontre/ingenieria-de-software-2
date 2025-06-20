@@ -29,6 +29,7 @@ def registrar_movimiento(repo: MovimientoRepository):
             cantidad=cantidad,
             fecha=datetime.now(),
             tipo=tipo,
+            timestamp=datetime.now()
         )
 
         repo.create_movimiento(movimiento)

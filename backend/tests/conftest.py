@@ -34,13 +34,16 @@ def setup_test_db():
     EntityBase.metadata.drop_all(bind=engine_test)
 
 # Fixture para generar una sesión de DB nueva en cada test
-@pytest.fixture()
+@pytest.fixture
 def db_session():
     session = TestingSessionLocal()
     try:
         yield session
     finally:
+        session.rollback()  # Limpieza post test
         session.close()
+
+
 
 # Cliente de FastAPI con base de datos sobreescrita para usar tests aislados
 @pytest.fixture()
@@ -61,6 +64,7 @@ def client():
 @pytest.fixture(autouse=True)
 def limpiar_tablas(db_session):
     yield
+    db_session.rollback()  # Evita PendingRollbackError
     for tabla in reversed(EntityBase.metadata.sorted_tables):
         db_session.execute(tabla.delete())
     db_session.commit()

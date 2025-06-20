@@ -1,3 +1,4 @@
+# backend/app/console/main_console.py
 from app.console.producto_console import main as producto_menu
 from app.console.deposito_console import main as deposito_menu
 from app.console.movimiento_console import main as movimiento_menu

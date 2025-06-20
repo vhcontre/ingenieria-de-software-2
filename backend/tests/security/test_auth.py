@@ -42,18 +42,24 @@ def test_login_ok(client, db_session):
 
 # ✅ Test: acceso a endpoint protegido con token válido
 def test_endpoint_protegido(client, db_session):
-    print("\n🔒 Ejecutando test_endpoint_protegido")
     crear_usuario_admin(db_session)
 
-    print("🔐 Login para obtener token...")
-    login_response = client.post("/auth/login", data={"username": "admin", "password": "admin_password"})
-    token = login_response.json()["access_token"]
+    # Login con username y password
+    login_resp = client.post(
+        "/auth/login",
+        data={"username": "admin", "password": "admin123"},
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+    )
 
-    print("📡 Accediendo a /usuarios/me con token...")
-    response = client.get("/usuarios/me", headers={"Authorization": f"Bearer {token}"})
-    print(f"🔍 Estado de respuesta: {response.status_code}")
-    assert response.status_code == 200
-    print("✅ Acceso autorizado.")
+    assert login_resp.status_code == 200, login_resp.text
+    token = login_resp.json()["access_token"]
+
+    # Acceso a endpoint protegido
+    headers = {"Authorization": f"Bearer {token}"}
+    resp = client.get("/usuarios/me", headers=headers)
+
+    assert resp.status_code == 200, resp.text
+
 
 # ✅ Test: acceso al endpoint solo admin
 def test_endpoint_admin_role(client, db_session):

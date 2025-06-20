@@ -1,3 +1,4 @@
+import traceback
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -101,13 +102,11 @@ def test_egreso_stock_insuficiente(repo, db_session, fecha_actual):
     assert "Stock insuficiente" in str(excinfo.value)
 
 def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
-    # Insertar producto
     producto = ProductoORM(nombre="Producto Listado", sku="SKU126", stock=10)
     db_session.add(producto)
     db_session.commit()
     db_session.refresh(producto)
 
-    # Crear movimientos
     mov1 = Movimiento(
         id=None,
         producto_id=producto.id,
@@ -138,6 +137,9 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
         assert movimientos is not None, "No se encontraron movimientos"
         assert len(movimientos) == 2
         assert all(m.producto_id == producto.id for m in movimientos)
-    except Exception:
-        db_session.rollback()
+    except Exception as e:        
+        print("Error en test_listado_movimientos_por_producto:", e)
+        traceback.print_exc()
         raise
+    finally:
+        db_session.rollback()
