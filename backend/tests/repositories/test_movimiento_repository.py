@@ -135,6 +135,7 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
 
     try:
         movimientos = repo.get_by_producto(producto.id)
+        assert movimientos is not None, "No se encontraron movimientos"
     except Exception:
         db_session.rollback()  # limpia estado fallido
         raise

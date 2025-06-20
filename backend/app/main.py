@@ -43,7 +43,7 @@ app.include_router(productos.router, prefix="/productos", tags=["Productos"])
 app.include_router(depositos.router, prefix="/depositos", tags=["Depósitos"])
 app.include_router(movimientos.router, prefix="/movimientos", tags=["Movimientos"])
 app.include_router(admin.router, prefix="/admin", tags=["Administración"])
-
+app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
 
 
 def custom_openapi():
