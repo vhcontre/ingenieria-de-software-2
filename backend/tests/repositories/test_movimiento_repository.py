@@ -44,7 +44,8 @@ def test_ingreso_exitoso(repo, db_session, fecha_actual):
         usuario_id=1,
         cantidad=5,
         fecha=fecha_actual,
-        tipo=DomainTipoMovimiento.ingreso
+        tipo=DomainTipoMovimiento.ingreso,
+        timestamp=fecha_actual
     )
 
     movimiento_creado = repo.create_movimiento(movimiento)
@@ -67,7 +68,8 @@ def test_egreso_exitoso(repo, db_session, fecha_actual):
         usuario_id=1,
         cantidad=8,
         fecha=fecha_actual,
-        tipo=DomainTipoMovimiento.egreso
+        tipo=DomainTipoMovimiento.egreso,
+        timestamp=fecha_actual
     )
 
     movimiento_creado = repo.create_movimiento(movimiento)
@@ -90,7 +92,8 @@ def test_egreso_stock_insuficiente(repo, db_session, fecha_actual):
         usuario_id=1,
         cantidad=5,
         fecha=fecha_actual,
-        tipo=DomainTipoMovimiento.egreso
+        tipo=DomainTipoMovimiento.egreso,
+        timestamp=fecha_actual
     )
 
     with pytest.raises(ValueError) as excinfo:
@@ -113,7 +116,8 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
         usuario_id=1,
         cantidad=3,
         fecha=fecha_actual,
-        tipo=DomainTipoMovimiento.ingreso
+        tipo=DomainTipoMovimiento.ingreso,
+        timestamp=fecha_actual
     )
     mov2 = Movimiento(
         id=None,
@@ -123,7 +127,8 @@ def test_listado_movimientos_por_producto(repo, db_session, fecha_actual):
         usuario_id=1,
         cantidad=2,
         fecha=fecha_actual,
-        tipo=DomainTipoMovimiento.egreso
+        tipo=DomainTipoMovimiento.egreso,
+        timestamp=fecha_actual
     )
     repo.create_movimiento(mov1)
     repo.create_movimiento(mov2)

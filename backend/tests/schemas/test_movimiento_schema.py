@@ -9,13 +9,13 @@ def test_movimiento_create_valido():
         "producto_id": 1,
         "deposito_origen_id": None,
         "deposito_destino_id": 2,
-        "tipo": "entrada",
+        "tipo": "ingreso",
         "cantidad": 10,
         "fecha": datetime.now(),
         "timestamp": datetime.now()
     }
     movimiento = MovimientoCreate(**data)
-    assert movimiento.tipo == "entrada"
+    assert movimiento.tipo == "ingreso"
     assert movimiento.cantidad == 10
 
 
@@ -23,7 +23,7 @@ def test_movimiento_create_cantidad_invalida():
     data = {
         "producto_id": 1,
         "deposito_destino_id": 2,
-        "tipo": "salida",
+        "tipo": "egreso",
         "cantidad": 0,
         "fecha": datetime.now(),
         "timestamp": datetime.now()
@@ -73,8 +73,8 @@ def test_movimiento_out_from_orm():
             self.fecha = fecha
             self.timestamp=datetime.now()
 
-    dummy = DummyMovimiento(1, 1, None, 2, "entrada", 20, datetime.now())
+    dummy = DummyMovimiento(1, 1, None, 2, "ingreso", 20, datetime.now())
     out = MovimientoOut.model_validate(dummy)
     assert out.id == 1
-    assert out.tipo == "entrada"
+    assert out.tipo == "ingreso"
     assert out.cantidad == 20
