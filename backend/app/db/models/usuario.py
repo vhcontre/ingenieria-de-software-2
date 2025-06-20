@@ -14,6 +14,7 @@ usuario_rol = Table(
 
 class UsuarioORM(EntityBase):
     __tablename__ = "usuarios"
+    __table_args__ = {'extend_existing': True} 
     
     username = Column(String, unique=True, index=True, nullable=False)
     email = Column(String, unique=True, index=True)
