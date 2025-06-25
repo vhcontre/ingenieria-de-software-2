@@ -5,6 +5,12 @@
 {% block content %}
 <h2>📋 Listado de Productos</h2>
 
+{% if msg == 'ok' %}
+<div style="color: green; padding: 8px; font-weight: bold;">
+    ✔ Movimiento registrado con éxito
+</div>
+{% endif %}
+
 <table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>ID</th>

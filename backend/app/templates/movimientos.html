@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Movimientos registrados{% endblock %}
+
+{% block content %}
+<h1>📦 Movimientos registrados</h1>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+        <th>Depósito Origen</th>
+        <th>Depósito Destino</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+    </tr>
+    {% for m in movimientos %}
+    <tr>
+        <td>{{ m.id }}</td>
+        <td>{{ m.producto_id }}</td>
+        <td>{{ m.tipo }}</td>
+        <td>{{ m.cantidad }}</td>
+        <td>{{ m.deposito_origen_id or "-" }}</td>
+        <td>{{ m.deposito_destino_id or "-" }}</td>
+        <td>{{ m.usuario_id }}</td>
+        <td>{{ m.fecha }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/web/movimientos/nuevo">➕ Nuevo movimiento</a>
+<a href="/web/productos">🔙 Ver productos</a>
+{% endblock %}
