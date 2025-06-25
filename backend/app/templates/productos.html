@@ -1,21 +1,27 @@
-<!-- app/templates/productos.html -->
 {% extends "base.html" %}
 
 {% block title %}Listado de Productos{% endblock %}
 
 {% block content %}
-<h2>Productos en Inventario</h2>
-<table border="1">
+<h2>📋 Listado de Productos</h2>
+
+<table border="1" cellspacing="0" cellpadding="8">
     <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Stock</th>
+        <th>SKU</th>
+        <th>Descripción</th>
+        <th>Stock Actual</th>
+        <th>Stock Mínimo</th>
     </tr>
     {% for producto in productos %}
     <tr>
         <td>{{ producto.id }}</td>
         <td>{{ producto.nombre }}</td>
+        <td>{{ producto.sku }}</td>
+        <td>{{ producto.descripcion }}</td>
         <td>{{ producto.stock }}</td>
+        <td>{{ producto.stock_minimo }}</td>
     </tr>
     {% endfor %}
 </table>
