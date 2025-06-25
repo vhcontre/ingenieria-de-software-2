@@ -1,12 +1,17 @@
 # file: backend/app/main.py
-from fastapi import FastAPI
+# from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.openapi.utils import get_openapi
 from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
 from fastapi.security import OAuth2
 from typing import Optional, Dict
 
-from app.routers import auth, usuarios, admin, productos, depositos, movimientos
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from pathlib import Path
 
+from app.routers import auth, usuarios, admin, productos, depositos, movimientos
+from app.routers import web_interface
 
 class OAuth2PasswordBearerWithCookie(OAuth2):
     def __init__(
@@ -18,7 +23,6 @@ class OAuth2PasswordBearerWithCookie(OAuth2):
     ):
         flows = OAuthFlowsModel(password={"tokenUrl": tokenUrl, "scopes": scopes or {}})
         super().__init__(flows=flows, scheme_name=scheme_name, description=description)
-
 
 oauth2_scheme = OAuth2PasswordBearerWithCookie(tokenUrl="/auth/login")
 
@@ -36,6 +40,9 @@ app = FastAPI(
     ]
 )
 
+BASE_DIR = Path(__file__).resolve().parent
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
 # Incluir routers
 app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
 app.include_router(usuarios.router, prefix="/usuarios", tags=["Usuarios"])
@@ -44,7 +51,7 @@ app.include_router(depositos.router, prefix="/depositos", tags=["Depósitos"])
 app.include_router(movimientos.router, prefix="/movimientos", tags=["Movimientos"])
 app.include_router(admin.router, prefix="/admin", tags=["Administración"])
 app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
-
+app.include_router(web_interface.router)
 
 def custom_openapi():
     if app.openapi_schema:
