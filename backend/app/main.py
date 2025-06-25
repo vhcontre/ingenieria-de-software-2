@@ -1,13 +1,12 @@
 # file: backend/app/main.py
 # from fastapi import FastAPI
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
 from fastapi.security import OAuth2
 from typing import Optional, Dict
 
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from pathlib import Path
 
 from app.routers import auth, usuarios, admin, productos, depositos, movimientos
