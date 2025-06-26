@@ -26,6 +26,18 @@ def ver_productos(request: Request, db: Session = Depends(get_db), msg: str = No
         "msg": msg
     })
 
+@router.get("/web/alerta_stock", response_class=HTMLResponse)
+def low_stock_report(request: Request, db: Session = Depends(get_db)):
+    repo = ProductoRepository(db)
+    low_stock_products = repo.get_low_stock_products()
+    return templates.TemplateResponse("alerta_stock.html", {
+        "request": request,
+        "productos": low_stock_products
+    })
+
+
+
+
 
 @router.get("/web/movimientos", response_class=HTMLResponse)
 def ver_movimientos(request: Request, db: Session = Depends(get_db)):

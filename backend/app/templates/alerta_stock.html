@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🚨 Productos con stock bajo</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Stock</th>
+        <th>Mínimo</th>
+    </tr>
+    {% for p in productos %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.stock_minimo }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

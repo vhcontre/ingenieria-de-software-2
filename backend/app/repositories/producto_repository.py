@@ -61,6 +61,10 @@ class ProductoRepository:
         self.db.commit()
         return True
 
+    def get_low_stock_products(self) -> list[Producto]:
+        productos = self.db.query(ProductoORM).filter(ProductoORM.stock < ProductoORM.stock_minimo).all()
+        return [producto_orm_to_domain(p) for p in productos]
+
     def seed_productos(self):
         if self.db.query(ProductoORM).count() > 0:
             print("La base de datos ya contiene productos. Seed cancelado.")
