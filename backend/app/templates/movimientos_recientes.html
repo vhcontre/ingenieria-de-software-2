@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📜 Últimos Movimientos</h2>
+
+<table border="1">
+    <tr>
+        <th>Fecha</th>
+        <th>Producto</th>
+        <th>Usuario</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+    </tr>
+    {% for mov in movimientos %}
+    <tr>
+        <td>{{ mov.fecha }}</td>
+        <td>{{ mov.producto_nombre }}</td>
+        <td>{{ mov.usuario_nombre }}</td>
+        <td>{{ mov.tipo }}</td>
+        <td>{{ mov.cantidad }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/web/productos">🔙 Volver al listado de productos</a>
+{% endblock %}

@@ -1,20 +1,24 @@
-from fastapi import APIRouter, Request, Depends
-from sqlalchemy import false
+
+from fastapi import APIRouter, Request, Depends, Form
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from app.db.session import get_db
-from app.repositories.producto_repository import ProductoRepository 
-from app.web_ui import templates
-
-
-from fastapi import Form
-from fastapi.responses import HTMLResponse, RedirectResponse
+from app.repositories.producto_repository import ProductoRepository
 from app.repositories.movimiento_repository import MovimientoRepository
+from app.web_ui import templates
 from datetime import datetime
 from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTipoMovimiento
 from app.db.models.producto import ProductoORM
 
-
 router = APIRouter()
+@router.get("/web/movimientos-recientes", response_class=HTMLResponse)
+def ver_movimientos_recientes(request: Request, db: Session = Depends(get_db)):
+    repo = MovimientoRepository(db)
+    movimientos = repo.get_recent_movements()
+    return templates.TemplateResponse(
+        "movimientos_recientes.html",
+        {"request": request, "movimientos": movimientos}
+    )
 
 @router.get("/web/productos", response_class=HTMLResponse)
 def ver_productos(request: Request, db: Session = Depends(get_db), msg: str = None):
@@ -34,9 +38,6 @@ def low_stock_report(request: Request, db: Session = Depends(get_db)):
         "request": request,
         "productos": low_stock_products
     })
-
-
-
 
 
 @router.get("/web/movimientos", response_class=HTMLResponse)
@@ -72,8 +73,7 @@ def procesar_formulario_movimiento(
 
         # Validar cantidad positiva
         if cantidad <= 0:
-            raise ValueError("La cantidad debe ser mayor a cero.")
-            return false
+            raise ValueError("La cantidad debe ser mayor a cero.")            
 
         # Validaciones según tipo
         if tipo == "ingreso" and not deposito_destino_id:

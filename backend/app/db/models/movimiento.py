@@ -5,12 +5,6 @@ from datetime import datetime
 from app.domain.models.movimiento import TipoMovimiento
 
 from app.db.models.base import EntityBase
-
-# class TipoMovimiento(PyEnum):
-#     ingreso = "ingreso"
-#     egreso = "egreso"
-#     traslado = "traslado"
-
 class MovimientoORM(EntityBase):
     __tablename__ = "movimientos"
     __table_args__ = {'extend_existing': True}

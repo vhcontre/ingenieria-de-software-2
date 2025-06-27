@@ -54,3 +54,22 @@ class MovimientoRepository:
             .all()
         )
         return [movimiento_orm_to_domain(m) for m in movimientos]
+
+    def get_recent_movements(self, limit: int = 10) -> list[dict]:
+        movimientos_orm = (
+            self.db.query(MovimientoORM)
+            .order_by(MovimientoORM.fecha.desc())
+            .limit(limit)
+            .all()
+        )
+        result = []
+        for m in movimientos_orm:
+            mov = movimiento_orm_to_domain(m)
+            # Obtener nombres relacionados
+            producto_nombre = m.producto.nombre if m.producto else f"ID {m.producto_id}"
+            usuario_nombre = m.usuario.username if m.usuario else f"ID {m.usuario_id}"
+            mov_dict = mov.__dict__.copy()
+            mov_dict["producto_nombre"] = producto_nombre
+            mov_dict["usuario_nombre"] = usuario_nombre
+            result.append(mov_dict)
+        return result
