@@ -31,7 +31,11 @@ jobs:
       - name: Lint con Ruff
         run: |
           ruff check .
-
+      - name: Start backend server
+        working-directory: backend
+        run: |
+          nohup uvicorn main:app --host 0.0.0.0 --port 8000 &
+          sleep 5  # Espera a que el servidor arranque
       - name: Ejecutar tests con pytest
         working-directory: backend
         run: |
