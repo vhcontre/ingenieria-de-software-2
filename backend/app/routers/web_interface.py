@@ -1,4 +1,6 @@
-
+import csv
+import io
+from fastapi.responses import Response
 from fastapi import APIRouter, Request, Depends, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
@@ -11,6 +13,35 @@ from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTip
 from app.db.models.producto import ProductoORM
 
 router = APIRouter()
+
+@router.get("/web/movimientos/exportar-csv")
+def exportar_movimientos_csv(db: Session = Depends(get_db)):
+    """
+    Exporta todos los movimientos como CSV, mostrando el nombre del producto y el username del usuario en vez de los IDs.
+    Mejora: Se accede a m.producto.nombre y m.usuario.username usando las relaciones ORM.
+    """
+    from app.db.models.movimiento import MovimientoORM
+    movimientos = db.query(MovimientoORM).order_by(MovimientoORM.fecha.desc()).all()
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["ID", "Producto", "Usuario", "Cantidad", "Tipo", "Fecha"])
+    for m in movimientos:
+        producto_nombre = m.producto.nombre if m.producto and hasattr(m.producto, 'nombre') else m.producto_id
+        usuario_nombre = m.usuario.username if m.usuario and hasattr(m.usuario, 'username') else m.usuario_id
+        writer.writerow([
+            m.id,
+            producto_nombre,
+            usuario_nombre,
+            m.cantidad,
+            m.tipo.value if hasattr(m.tipo, 'value') else m.tipo,
+            m.fecha.strftime("%Y-%m-%d") if hasattr(m.fecha, 'strftime') else m.fecha
+        ])
+    response = Response(content=output.getvalue(), media_type="text/csv")
+    response.headers["Content-Disposition"] = "attachment; filename=movimientos.csv"
+    return response
+
+
+
 @router.get("/web/movimientos-recientes", response_class=HTMLResponse)
 def ver_movimientos_recientes(request: Request, db: Session = Depends(get_db)):
     repo = MovimientoRepository(db)

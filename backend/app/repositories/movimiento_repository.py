@@ -11,9 +11,14 @@ from app.domain.models.movimiento import Movimiento, TipoMovimiento as DomainTip
 
 
 class MovimientoRepository:
-    def __init__(self, db: Session):
-        self.db = db
 
+    def __init__(self, db: Session):
+        self.db = db    
+    
+    def get_all(self) -> list[Movimiento]:
+        movimientos = self.db.query(MovimientoORM).order_by(MovimientoORM.fecha.desc()).all()
+        return [movimiento_orm_to_domain(m) for m in movimientos]
+    
     def create_movimiento(self, movimiento: Movimiento) -> Movimiento:
         # Obtener el producto
         producto = self.db.query(ProductoORM).filter(ProductoORM.id == movimiento.producto_id).first()
@@ -41,11 +46,7 @@ class MovimientoRepository:
         self.db.refresh(orm_obj)
 
         return movimiento_orm_to_domain(orm_obj)
-
-    def get_all(self) -> list[Movimiento]:
-        movimientos = self.db.query(MovimientoORM).order_by(MovimientoORM.fecha.desc()).all()
-        return [movimiento_orm_to_domain(m) for m in movimientos]
-
+    
     def get_by_producto(self, producto_id: int) -> list[Movimiento]:
         movimientos = (
             self.db.query(MovimientoORM)
