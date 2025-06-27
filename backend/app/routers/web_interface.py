@@ -61,7 +61,7 @@ def ver_productos(request: Request, db: Session = Depends(get_db), msg: str = No
         "msg": msg
     })
 
-@router.get("/web/alerta_stock", response_class=HTMLResponse)
+@router.get("/web/alerta-stock", response_class=HTMLResponse)
 def low_stock_report(request: Request, db: Session = Depends(get_db)):
     repo = ProductoRepository(db)
     low_stock_products = repo.get_low_stock_products()
