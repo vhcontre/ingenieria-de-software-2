@@ -1,4 +1,4 @@
-# 📅 Semana 9 – Módulo de Alertas y Reportes (FastAPI + Jinja2 + CSV)
+# 📅 How to 9 – Módulo de Alertas y Reportes (FastAPI + Jinja2 + CSV)
 
 ## 1. Introducción
 

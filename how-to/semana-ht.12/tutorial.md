@@ -1,4 +1,4 @@
-# 📅 Semana 10: Dockerización del Backend y Base de Datos
+# 📅 How to 10: Dockerización del Backend y Base de Datos
 
 ---
 

@@ -1,4 +1,4 @@
-# 📅 Semana 3 – CRUD, Validaciones y Serialización
+# 📅 How to 3 – CRUD, Validaciones y Serialización
 
 | Semana | Objetivos principales                        |
 | ------ | -------------------------------------------- |

@@ -1,8 +1,8 @@
-# 📘 Unidad 7 – Integración de Jinja2 para Interfaz Web
+# 📘 How to 7 – Integración de Jinja2 para Interfaz Web
 
 ---
 
-## 🎯 Objetivos de la Unidad 7
+## 🎯 Objetivos de la How to 7
 
 * Integrar el motor de plantillas Jinja2 con FastAPI para renderizar páginas HTML dinámicas.
 * Crear rutas web que sirvan contenido HTML generado con Jinja2.

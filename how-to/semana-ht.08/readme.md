@@ -1,4 +1,4 @@
-## ✅ Unidad 6 – Pruebas de Integración, Documentación y CI
+## ✅ How to 6 – Pruebas de Integración, Documentación y CI
 
 > Esta unidad cierra el primer bloque fuerte del backend. Pasamos de validar funciones individuales a verificar cómo interactúan los distintos componentes del sistema, automatizando el proceso de testeo y aprovechando herramientas de documentación integradas.
 

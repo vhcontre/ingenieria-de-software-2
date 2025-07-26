@@ -1,4 +1,4 @@
-### 📅 Semana 1: *“El proyecto comienza. Pero… ¿cómo medimos si vamos bien?”*
+### 📅 How to 1: *“El proyecto comienza. Pero… ¿cómo medimos si vamos bien?”*
 
 #### 🗣️ Apertura con guión breve
 

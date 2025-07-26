@@ -1,4 +1,4 @@
-# 📘 Unidad 6 – Pruebas de integración, Documentación con Swagger y CI con GitHub Actions
+# 📘 How to 6 – Pruebas de integración, Documentación con Swagger y CI con GitHub Actions
 
 ---
 

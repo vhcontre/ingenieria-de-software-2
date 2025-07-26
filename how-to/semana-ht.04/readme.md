@@ -1,18 +1,4 @@
-### 📌 Paso 1: Resumen general de la **Semana 3 - IS2**
-
-Vamos a hacer memoria de lo trabajado hasta ahora, con foco en la continuidad:
-
-#### ✅ Hasta la Semana 2:
-
-* **Modelo de dominio** diseñado
-* **ORM con SQLAlchemy** creado (clases `Product`, `Movement`)
-* **Pydantic schemas** implementados
-* Primeras **pruebas unitarias** con `pytest` funcionando
-  → Todo centrado en validar el **modelo de negocio** y su coherencia estructural.
-
----
-
-### 🚀 Semana 3 – Objetivo central
+### 🚀 How to 3 – Objetivo central
 
 > **Construcción de los servicios de lógica de negocio y la capa de acceso a datos**
 

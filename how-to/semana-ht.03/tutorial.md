@@ -1,4 +1,4 @@
-# 📅 Semana 2 – Diseño del Modelo de Dominio
+# 📅 How to 2 – Diseño del Modelo de Dominio
 
 ## 📌 Índice
 
@@ -215,7 +215,3 @@ def test_producto_create_valido():
 | ⚙️ Diseño del modelo de dominio                        | ✅ Completo  |
 | 📁 Estructura inicial del backend                      | ✅ Completo  |
 | 🧪 Primeras pruebas unitarias (schemas y validaciones) | ✅ Completas |
-
----
-
-

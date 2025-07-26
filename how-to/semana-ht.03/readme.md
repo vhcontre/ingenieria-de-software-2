@@ -1,4 +1,4 @@
-# 📅 Semana 2 — Gestión del Riesgo + Extensión del Modelo
+# 📅 How to 2 — Gestión del Riesgo + Extensión del Modelo
 
 ## 📑 Índice
 

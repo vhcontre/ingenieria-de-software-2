@@ -1,4 +1,4 @@
-# 📘 Unidad 7 – Integración de Jinja2 para interfaz web
+# 📘 How to 7 – Integración de Jinja2 para interfaz web
 
 
 
@@ -166,7 +166,7 @@ app.include_router(web_interface.router)
 
 ---
 
-## ✅ Resumen de la Unidad 7
+## ✅ Resumen de la How to 7
 
 | Objetivo                                 | Estado  |
 | ---------------------------------------- | ------- |

@@ -1,4 +1,4 @@
-# 📅 Semana 9: Módulo de Alertas y Reportes
+# 📅 How to 9: Módulo de Alertas y Reportes
 
 | Objetivo principal                               | Descripción y pasos clave                                                         |
 | ------------------------------------------------ | --------------------------------------------------------------------------------- |

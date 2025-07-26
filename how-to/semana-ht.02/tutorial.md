@@ -1,18 +1,7 @@
-* 📑 **Índice al principio para navegación**
-* 📘 Secciones divididas por foco (Setup, Git, Análisis)
-* ✅ Checklists al final de cada etapa
-* 📌 Sugerencias de facilitación en comentarios (como profe)
-
----
-
-Te dejo todo en formato Markdown limpio, ideal para ser la **base de tu documento docente o entregable semanal**, ya sea en GitHub, PDF o en el aula.
-
----
-
-### 📄 Semana 1 — Setup + GitHub + Análisis del Sistema
+### 📄 How to 1 — Setup + GitHub + Análisis del Sistema
 
 ````markdown
-# 📅 Semana 1 — Setup + GitHub + Análisis del Sistema
+# 📅 How to 1 — Setup + GitHub + Análisis del Sistema
 
 ## 📑 Índice
 
@@ -193,10 +182,3 @@ git push -u origin main
 * [ ] Sé hacer un `git commit` y un `git push`
 * [ ] Comprendo el caso de uso general del sistema
 * [ ] Puedo explicar qué hace cada carpeta del backend
-
----
-
-```
-
-
-```

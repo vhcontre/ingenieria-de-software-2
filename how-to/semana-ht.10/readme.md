@@ -1,4 +1,4 @@
-### 📅 Semana trabajada: **Semana 8**
+### 📅 Semana trabajada: **How to 8**
 
 ### 🎯 Objetivos cumplidos
 

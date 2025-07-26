@@ -1,4 +1,4 @@
-## 🧩 Unidad 5 – Autenticación y Autorización
+## 🧩 How to 5 – Autenticación y Autorización
 
 > Semana clave donde nuestro sistema comienza a **proteger recursos sensibles**, limitando el acceso según roles (`admin` / `operador`) y usando **JWT** para autenticación. Además, incorporamos middleware para autorización y pruebas sobre endpoints autenticados.
 

@@ -1,4 +1,4 @@
-# 📅 Semana 10: Dockerización
+# 📅 How to 10: Dockerización
 
 
 ### 🎯 Objetivos principales

@@ -1,4 +1,4 @@
-## 📦 Semana 4 – Módulo de Movimientos de Stock + Reglas de Negocio
+## 📦 How to 4 – Módulo de Movimientos de Stock + Reglas de Negocio
 
 | Semana | Objetivos principales                                                                          |
 | ------ | ---------------------------------------------------------------------------------------------- |
