@@ -1,6 +1,6 @@
-# 📅 How to 2 – Diseño del Modelo de Dominio
+#  How to 2 – Diseño del Modelo de Dominio
 
-## 📌 Índice
+##  Índice
 
 1. [Objetivos principales](#objetivos-principales)
 2. [¿Por qué usar SQLite en lugar de MySQL?](#por-qué-usar-sqlite-en-lugar-de-mysql)
@@ -18,8 +18,8 @@
 | Semana | Objetivos principales                                             |
 | ------ | ----------------------------------------------------------------- |
 | 2      | ⚙️ Diseño del modelo de dominio                                   |
-|        | 📁 Estructura inicial del backend (FastAPI + SQLAlchemy + SQLite) |
-|        | 🧪 Primeras pruebas unitarias simples                             |
+|        |  Estructura inicial del backend (FastAPI + SQLAlchemy + SQLite) |
+|        |  Primeras pruebas unitarias simples                             |
 
 ---
 
@@ -27,17 +27,17 @@
 
 **Sí, absolutamente.** Para un entorno educativo, **SQLite es ideal** por su facilidad, portabilidad y menor necesidad de configuración.
 
-### 🔹 Ventajas
+###  Ventajas
 
 | Beneficio                          | Por qué es útil                         |
 | ---------------------------------- | --------------------------------------- |
-| 🧱 Sin servidor externo            | No requiere instalación adicional       |
+|  Sin servidor externo            | No requiere instalación adicional       |
 | ⚡ Fácil de iniciar                 | Se crea como un archivo `.db`           |
-| 🎒 Ligero y portátil               | Funciona en cualquier sistema operativo |
-| 💻 Menos dependencias              | Sólo `sqlite3` y `SQLAlchemy`           |
-| 📚 Ideal para FastAPI + SQLAlchemy | Rápido de integrar                      |
+|  Ligero y portátil               | Funciona en cualquier sistema operativo |
+|  Menos dependencias              | Sólo `sqlite3` y `SQLAlchemy`           |
+|  Ideal para FastAPI + SQLAlchemy | Rápido de integrar                      |
 
-### 🔻 Desventajas (no problemáticas)
+###  Desventajas (no problemáticas)
 
 | Limitación                                   | ¿Afecta en este proyecto?          |
 | -------------------------------------------- | ---------------------------------- |
@@ -51,10 +51,10 @@
 
 ## Modelo de Dominio y Casos de Uso
 
-📄 [`modelo-dominio.md`](#)
+ [`modelo-dominio.md`](#)
 
 ```markdown
-# 🧩 Modelo de Dominio
+#  Modelo de Dominio
 
 ## Entidades
 
@@ -72,7 +72,7 @@
 - Movimiento vincula productos y depósitos
 ```
 
-📄 [`casos-de-uso.md`](#)
+ [`casos-de-uso.md`](#)
 
 ```markdown
 ## Actores
@@ -92,7 +92,7 @@
 
 ## Modelo de Clases con SQLAlchemy ORM
 
-📁 Estructura:
+ Estructura:
 
 ```
 app/db/models/
@@ -106,7 +106,7 @@ app/db/models/
 
 Se implementaron modelos con relaciones y buenas prácticas.
 
-🔗 Ejemplos destacados:
+ Ejemplos destacados:
 
 * `Base` con `__repr__`, `__eq__`, `to_dict()`, `to_json()`
 * `Producto`, `Deposito`, `Movimiento` con relaciones ORM
@@ -116,19 +116,19 @@ Se implementaron modelos con relaciones y buenas prácticas.
 
 ## Inicialización de la Base de Datos
 
-📁 `app/create_db.py`:
+ `app/create_db.py`:
 
 ```python
 Base.metadata.create_all(bind=engine)
 ```
 
-📄 `.env`:
+ `.env`:
 
 ```
 DATABASE_URL=sqlite:///./test.db
 ```
 
-📦 Requisitos:
+ Requisitos:
 
 ```
 fastapi
@@ -138,13 +138,13 @@ pydantic
 python-dotenv
 ```
 
-🛠️ Ejecutar:
+️ Ejecutar:
 
 ```bash
 python -m app.create_db
 ```
 
-📊 DB visual: [DB Browser for SQLite](https://sqlitebrowser.org)
+ DB visual: [DB Browser for SQLite](https://sqlitebrowser.org)
 
 ---
 
@@ -160,7 +160,7 @@ Domain Models (puro Python)
 ORM SQLAlchemy
 ```
 
-🔄 Se implementaron:
+ Se implementaron:
 
 * `app/db/models/` (ORM)
 * `app/domain/models/` (Dominio puro)
@@ -187,7 +187,7 @@ project/
 
 ## Pruebas Unitarias con Pytest
 
-🧪 Ejemplo: `tests/schemas/test_producto_schema.py`
+ Ejemplo: `tests/schemas/test_producto_schema.py`
 
 ```python
 def test_producto_create_valido():
@@ -195,13 +195,13 @@ def test_producto_create_valido():
     assert producto.nombre == "Pepsi"
 ```
 
-🔍 Validaciones cubiertas:
+ Validaciones cubiertas:
 
 * Esquemas válidos e inválidos
 * Restricciones de campos (mínimo, tipo)
 * `model_validate` con objetos ORM
 
-🧪 Configuración:
+ Configuración:
 
 * Base de datos en memoria (`sqlite:///:memory:`)
 * `conftest.py` con `TestClient` y sesiones de prueba
@@ -213,5 +213,5 @@ def test_producto_create_valido():
 | Etapa                                                  | Estado      |
 | ------------------------------------------------------ | ----------- |
 | ⚙️ Diseño del modelo de dominio                        | ✅ Completo  |
-| 📁 Estructura inicial del backend                      | ✅ Completo  |
-| 🧪 Primeras pruebas unitarias (schemas y validaciones) | ✅ Completas |
+|  Estructura inicial del backend                      | ✅ Completo  |
+|  Primeras pruebas unitarias (schemas y validaciones) | ✅ Completas |

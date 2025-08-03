@@ -1,10 +1,10 @@
-# 📅 How to 3 – CRUD, Validaciones y Serialización
+#  How to 3 – CRUD, Validaciones y Serialización
 
 | Semana | Objetivos principales                        |
 | ------ | -------------------------------------------- |
-| 3      | 🔄 CRUD de depósitos y productos             |
-|        | 🧱 Validaciones y serialización con Pydantic |
-|        | 📥 Operaciones básicas desde la consola      |
+| 3      |  CRUD de depósitos y productos             |
+|        |  Validaciones y serialización con Pydantic |
+|        |  Operaciones básicas desde la consola      |
 
 ---
 
@@ -19,7 +19,7 @@ update_deposito(id: int, deposito_in: DepositoUpdate) -> DepositoOut
 delete_deposito(id: int) -> None
 ```
 
-🧱 Se usan:
+ Se usan:
 
 * Modelos ORM (`DepositoORM`) para persistencia
 * Schemas Pydantic (`DepositoCreate`, `DepositoUpdate`, `DepositoOut`) para validar y serializar
@@ -173,11 +173,4 @@ class DepositoRepository:
 | Validaciones y serialización con Pydantic | ✅      |
 | Operaciones desde consola                 | ✅      |
 
-🧪 También se probaron casos con entradas inválidas y SKU duplicado, mejorando la robustez.
-
----
-
-## 🏁 Conclusión
-
-> Semana 3 finalizada exitosamente.
-> El sistema cuenta con una base sólida: repositorios funcionales, validaciones completas, y pruebas manuales efectivas desde consola.
+ También se probaron casos con entradas inválidas y SKU duplicado, mejorando la robustez.

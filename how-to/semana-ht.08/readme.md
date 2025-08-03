@@ -4,11 +4,11 @@
 
 ---
 
-### 🧪 1. Pruebas de integración
+###  1. Pruebas de integración
 
 > Ya no se testean funciones aisladas, sino el flujo completo: desde el request HTTP hasta la persistencia y validaciones de dominio.
 
-#### 🔧 Herramientas utilizadas:
+####  Herramientas utilizadas:
 
 * `pytest` para escribir y ejecutar pruebas.
 * `TestClient` de FastAPI para simular peticiones HTTP.
@@ -19,7 +19,7 @@
 * Verificar reglas de negocio completas (ej: no permitir stock negativo).
 * Asegurar consistencia entre la base de datos, lógica de negocio y respuestas HTTP.
 
-#### 📂 Organización recomendada:
+####  Organización recomendada:
 
 ```bash
 tests/
@@ -29,7 +29,7 @@ tests/
 │   └── test_error_cases.py
 ```
 
-#### 🧪 Ejemplo de prueba de flujo:
+####  Ejemplo de prueba de flujo:
 
 ```python
 def test_register_entry_flow():
@@ -55,14 +55,14 @@ def test_register_entry_flow():
 
 ---
 
-### 📘 2. Documentación automática con Swagger (FastAPI)
+###  2. Documentación automática con Swagger (FastAPI)
 
 * FastAPI genera automáticamente una documentación navegable en:
 
   * [`/docs`](http://localhost:8000/docs): Swagger UI
   * [`/redoc`](http://localhost:8000/redoc): Redoc
 
-#### 📌 Personalización mínima:
+####  Personalización mínima:
 
 * Se agregó `title`, `version`, y `description` en la instancia de `FastAPI`:
 
@@ -74,18 +74,18 @@ app = FastAPI(
 )
 ```
 
-#### 🎯 Buenas prácticas:
+####  Buenas prácticas:
 
 * Usar `status_code=201`, `responses`, y `summary` en los endpoints para mejorar la visualización.
 * Mantener ejemplos y descripciones claras en los esquemas Pydantic.
 
 ---
 
-### 🔄 3. GitHub Actions: lint + tests automáticos
+###  3. GitHub Actions: lint + tests automáticos
 
 > La integración continua garantiza que todo lo que se suba al repositorio funcione correctamente.
 
-#### 📁 Archivo `.github/workflows/tests.yml`:
+####  Archivo `.github/workflows/tests.yml`:
 
 ```yaml
 name: Run Tests
@@ -120,8 +120,10 @@ jobs:
 
 ---
 
-### 📦 Resultado final de la Unidad 6
+###  Resultado final de la Unidad 6
 
 * Se validó el correcto funcionamiento **end-to-end** del sistema con pruebas de integración.
 * La documentación técnica quedó accesible y navegable para cualquiera que consuma la API.
 * El repositorio ahora cuenta con **CI automática** que ejecuta los tests al hacer `push` o `PR`.
+
+

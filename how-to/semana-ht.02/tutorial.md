@@ -1,24 +1,24 @@
-### 📄 How to 1 — Setup + GitHub + Análisis del Sistema
+###  How to 1 — Setup + GitHub + Análisis del Sistema
 
 ````markdown
-# 📅 How to 1 — Setup + GitHub + Análisis del Sistema
+#  How to 1 — Setup + GitHub + Análisis del Sistema
 
-## 📑 Índice
+##  Índice
 
-1. [🎯 Objetivos generales](#-objetivos-generales)
-2. [🔧 Setup del entorno](#-setup-del-entorno)
-3. [🧱 Estructura del proyecto](#-estructura-del-proyecto)
-4. [🧪 Estructura de pruebas](#-estructura-de-pruebas)
-5. [📄 Documentación y archivos clave](#-documentación-y-archivos-clave)
+1. [ Objetivos generales](#-objetivos-generales)
+2. [ Setup del entorno](#-setup-del-entorno)
+3. [ Estructura del proyecto](#-estructura-del-proyecto)
+4. [ Estructura de pruebas](#-estructura-de-pruebas)
+5. [ Documentación y archivos clave](#-documentación-y-archivos-clave)
 6. [⚙️ Configuración y contenedores](#️-configuración-y-contenedores)
-7. [📚 Introducción a Git y GitHub](#-introducción-a-git-y-github)
-8. [📋 Análisis del sistema y diagramas](#-análisis-del-sistema-y-diagramas)
-9. [📝 Entregables de la semana](#-entregables-de-la-semana)
+7. [ Introducción a Git y GitHub](#-introducción-a-git-y-github)
+8. [ Análisis del sistema y diagramas](#-análisis-del-sistema-y-diagramas)
+9. [ Entregables de la semana](#-entregables-de-la-semana)
 10. [✅ Checklist de comprensión](#-checklist-de-comprensión)
 
 ---
 
-## 🎯 Objetivos generales
+##  Objetivos generales
 
 - Configurar el entorno de desarrollo profesional.
 - Comprender la estructura técnica del proyecto base.
@@ -27,7 +27,7 @@
 
 ---
 
-## 🔧 Setup del entorno
+##  Setup del entorno
 
 ### Requisitos mínimos:
 
@@ -52,7 +52,7 @@ pip install fastapi uvicorn sqlalchemy pymysql pydantic
 
 ---
 
-## 🧱 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 inventario-2025/
@@ -77,7 +77,7 @@ inventario-2025/
 
 ---
 
-## 🧪 Estructura de pruebas
+##  Estructura de pruebas
 
 ```
 test/
@@ -94,7 +94,7 @@ test/
 
 ---
 
-## 📄 Documentación y archivos clave
+##  Documentación y archivos clave
 
 | Archivo          | Descripción                    |
 | ---------------- | ------------------------------ |
@@ -113,7 +113,7 @@ test/
 
 ---
 
-## 📚 Introducción a Git y GitHub
+##  Introducción a Git y GitHub
 
 ### Conceptos clave:
 
@@ -141,7 +141,7 @@ git push -u origin main
 
 ---
 
-## 📋 Análisis del sistema y diagramas
+##  Análisis del sistema y diagramas
 
 ### Caso de uso general:
 
@@ -161,11 +161,11 @@ git push -u origin main
 * Modelo de entidades inicial
 * Flujo de stock (entrada/salida)
 
-🛠 Subir `.drawio` y captura como imagen en `docs/semana-1/`
+ Subir `.drawio` y captura como imagen en `docs/semana-1/`
 
 ---
 
-## 📝 Entregables de la semana
+##  Entregables de la semana
 
 * [ ] Repositorio en GitHub con estructura básica
 * [ ] README inicial completo

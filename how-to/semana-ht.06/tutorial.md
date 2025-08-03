@@ -1,6 +1,6 @@
-# 🧠 How to 5 – Autenticación y Autorización (JWT + Roles)
+#  How to 5 – Autenticación y Autorización (JWT + Roles)
 
-## 📚 Índice
+##  Índice
 
 1. [Objetivos de la unidad](#objetivos-de-la-unidad)
 2. [1. ¿Qué es JWT y para qué lo usamos?](#1-qué-es-jwt-y-para-qué-lo-usamos)
@@ -194,3 +194,5 @@ def test_acceso_no_autenticado():
 * Por ahora, los usuarios son simulados. En proyectos reales, deben ir en una base de datos.
 * El middleware actual cubre la validación básica, pero puede expandirse a logs, auditorías, o integración con OAuth.
 * Siempre que protejas rutas críticas, **asegurate de tener pruebas automáticas** que verifiquen los permisos.
+
+

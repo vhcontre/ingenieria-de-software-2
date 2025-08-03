@@ -1,11 +1,11 @@
-# 📅 How to 9: Módulo de Alertas y Reportes
+#  How to 9: Módulo de Alertas y Reportes
 
 | Objetivo principal                               | Descripción y pasos clave                                                         |
 | ------------------------------------------------ | --------------------------------------------------------------------------------- |
-| 📊 **Módulo de alertas y reportes (HTML o CSV)** | Crear reportes visuales y exportables para monitorear stock, movimientos, alertas |
+|  **Módulo de alertas y reportes (HTML o CSV)** | Crear reportes visuales y exportables para monitorear stock, movimientos, alertas |
 | ✅ **Navegación entre vistas**                    | Agregar navegación fluida entre vistas: productos, movimientos y reportes         |
-| 🧪 **Pruebas backend y formularios web**         | Testear correctamente el nuevo módulo con pruebas unitarias y de integración      |
-| 🌿 **Flujo Git: rama + PR para integrar módulo** | Trabajar en branch separado, abrir PR para revisión, integrar en main             |
+|  **Pruebas backend y formularios web**         | Testear correctamente el nuevo módulo con pruebas unitarias y de integración      |
+|  **Flujo Git: rama + PR para integrar módulo** | Trabajar en branch separado, abrir PR para revisión, integrar en main             |
 
 ---
 
@@ -53,7 +53,7 @@
 
 ---
 
-## 🧭 Milestone y Issues sugeridos
+##  Milestone y Issues sugeridos
 
 | Issue Nº | Título                                             | Etiquetas          |
 | -------- | -------------------------------------------------- | ------------------ |

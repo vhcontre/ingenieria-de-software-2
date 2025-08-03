@@ -1,0 +1,188 @@
+# **Enunciado General del Proyecto: Sistema de Inventario con Depósitos**
+
+## **Objetivo General**
+
+Desarrollar un sistema web que permita gestionar productos en inventario, distribuidos en distintos depósitos físicos, registrando movimientos de entrada y salida, con control de stock, alertas, y funcionalidades de administración y seguridad.
+
+---
+
+## **Contexto**
+
+Una empresa mediana que gestiona productos en múltiples depósitos desea controlar de forma centralizada:
+
+* El stock por producto en cada ubicación.
+* Los movimientos de inventario.
+* Las alertas cuando ciertos productos alcanzan niveles críticos.
+* Quién genera cada operación (trazabilidad).
+
+---
+
+## **Requerimientos Funcionales**
+
+### **Gestión de Usuarios**
+
+* Login y registro de usuarios (JWT).
+* Roles: *Administrador*, *Operador de depósito*.
+* Cada acción queda registrada con usuario y timestamp.
+
+---
+
+### **Depósitos**
+
+* Crear, editar y eliminar depósitos.
+* Cada depósito tiene una ubicación y capacidad máxima opcional.
+
+---
+
+###  **Productos**
+
+* Crear, editar, eliminar productos.
+* Atributos: nombre, SKU, categoría, descripción, unidad de medida.
+* Stock total se calcula como suma entre depósitos.
+
+---
+
+### **Movimientos de Stock**
+
+* Entrada o salida de stock por depósito.
+* Atributos: tipo (entrada/salida), cantidad, fecha, usuario, motivo.
+* Se deben actualizar los niveles de stock por producto y depósito.
+
+---
+
+### **Alertas de Stock Crítico**
+
+* Configurar un "nivel mínimo" por producto.
+* Generar alerta si el stock en un depósito baja de ese mínimo.
+
+---
+
+### **Consultas e Informes**
+
+* Ver el stock total por producto y por depósito.
+* Filtrar movimientos por fechas, usuario, tipo.
+* Ver historial de stock de un producto en un depósito.
+
+---
+
+## **Requerimientos No Funcionales**
+
+* Interfaz web responsiva y moderna (Jinja2).
+* API REST documentada (Swagger/OpenAPI).
+* Backend desacoplado y testeable (FastAPI recomendado).
+* Base de datos (SQLite).
+* Despliegue en la nube (Railway, Render, Vercel, Netlify).
+* Seguridad con JWT y roles.
+* Uso de GitHub y buenas prácticas de control de versiones.
+
+---
+
+## **Criterios de Evaluación**
+
+* Uso correcto de GitHub y gestión de ramas/pull requests.
+* Arquitectura limpia y modular (separación de capas, patrones aplicados).
+* Cobertura de pruebas mínima definida.
+* Documentación clara y navegable.
+* CI/CD funcional.
+* Aplicación desplegada y funcional.
+
+---
+
+
+## **Tecnologías Requeridas**
+
+
+### Herramientas base (para estudiantes y entorno de desarrollo):
+
+* **Editor de código:** [Visual Studio Code](https://code.visualstudio.com/)
+* **Lenguaje Backend:** Python 3.10+ con [FastAPI](https://fastapi.tiangolo.com/)
+* **Frontend:** Jinja2
+* **Base de datos:** SQLite
+* **Control de versiones:** Git + GitHub
+* **Pruebas Backend:** `pytest`, `httpx`
+* **Documentación de API:** Swagger (integrado con FastAPI)
+* **CI/CD (opcional si no hay despliegue):** GitHub Actions
+* **Contenedores (opcional):** Docker para integrar servicios localmente
+
+
+
+# Proyecto Sistema de Inventario
+
+## Estructura del proyecto y explicación
+
+Este proyecto está organizado para facilitar el desarrollo backend con FastAPI y la generación de vistas web con Jinja2, eliminando la complejidad del frontend Angular para reducir la curva de aprendizaje.
+
+---
+
+### Estructura de carpetas y archivos
+
+| Carpeta / Archivo    | Descripción                                                            |
+| -------------------- | ---------------------------------------------------------------------- |
+| `backend/`           | Backend desarrollado con FastAPI                                       |
+| └─ `app/api/`        | Rutas organizadas por entidad: productos, depósitos, movimientos, etc. |
+| └─ `app/core/`       | Configuración general: entorno, seguridad y utilidades centrales       |
+| └─ `app/db/`         | Modelos, esquemas, sesión y migraciones de base de datos               |
+| └─ `app/services/`   | Lógica de negocio: stock, alertas, reglas de negocio                   |
+| └─ `app/templates/`  | Plantillas Jinja2 para la generación de vistas web                     |
+| └─ `app/static/`     | Archivos estáticos para la web (CSS, JS, imágenes)                     |
+| └─ `app/tests/`      | Pruebas unitarias e integración con `pytest`                           |
+| └─ `app/main.py`     | Punto de entrada principal de la aplicación FastAPI                    |
+| `docs/`              | Documentación general, diagramas y entregables semanales               |
+| └─ `semana-XX/`      | Subcarpetas organizadas por semana con entregables docentes            |
+| `docker-compose.yml` | Orquestación de contenedores backend / base de datos                   |
+| `Dockerfile`         | Contenedor para backend                                                |
+| `.env`               | Variables de entorno (configuraciones sensibles y puertos)             |
+| `.gitignore`         | Archivos y carpetas ignorados (entornos, cache, logs, etc.)            |
+| `README.md`          | Descripción general del proyecto y guía para ejecución                 |
+| `changelog.md`       | Historial de cambios y versiones por semana                            |
+
+---
+
+## Cambios en la planificación y enfoque
+
+Para minimizar la complejidad y facilitar la incorporación del proyecto en la currícula de tercer año, se decidió:
+
+* **Eliminar el frontend Angular**, reemplazándolo por una interfaz web sencilla generada con **Jinja2** en FastAPI.
+* Esto permite enfocarnos en conceptos fundamentales del backend, bases de datos, pruebas y desarrollo web básico, sin sobrecargar con frameworks frontend avanzados.
+* Se mantiene el uso de GitHub Actions para asegurar buenas prácticas de DevOps (**Docker?**).
+* La estructura de carpetas se adapta para incluir las plantillas y recursos estáticos para la UI.
+
+---
+
+## Planificación (12 semanas)
+
+| Semana | Objetivos principales                                             |
+| ------ | ----------------------------------------------------------------- |
+| 1      | 🔧 Setup general (VS Code, entorno Python)                        |
+|        | 🧠 Introducción a Git, GitHub y forks                             |
+|        | 📋 Análisis del problema y primeros diagramas                     |
+| 2      | ⚙️ Diseño del modelo de dominio                                   |
+|        | 📁 Estructura inicial del backend (FastAPI + SQLAlchemy + SQLite) |
+|        | 🧪 Primeras pruebas unitarias simples                             |
+| 3      | 🔄 CRUD de depósitos y productos                                  |
+|        | 🧱 Validaciones y serialización con Pydantic                      |
+|        | 📥 Operaciones básicas desde la consola                           |
+| 4      | 📈 Gestión de movimientos (entrada/salida)                        |
+|        | 🔍 Reglas de negocio: stock mínimo, trazabilidad                  |
+|        | 🧪 Pruebas unitarias con más lógica                               |
+| 5      | 🔐 Autenticación y roles (JWT: admin y operador)                  |
+|        | 🧪 Pruebas de endpoints autenticados                              |
+|        | 🔐 Middleware y autorización                                      |
+| 6      | 🧪 Pruebas de integración                                         |
+|        | 📘 Documentación con Swagger                                      |
+|        | 🔄 Uso de GitHub Actions para lint + tests                        |
+| 7      | 🌐 Integración de Jinja2 para interfaz web                        |
+|        | 📄 Creación de plantillas y rutas web básicas                     |
+| 8      | 💾 Formularios web para movimientos                               |
+|        | 🧪 Validación y manejo de formularios con Jinja2 y FastAPI        |
+| 9      | 📊 Módulo de alertas/reportes (HTML o CSV)                     |
+|        | ✅ Navegación entre vistas (productos / movimientos / reportes) |
+|        | 🧪 Pruebas backend y formularios web                           |
+|        | 🌿 Flujo Git: crear rama + PR para integrar módulo             |
+| 10     | 🐳 Dockerización del backend y base de datos                      |
+|        | 🔁 CI/CD local o simulado con GitHub Actions                      |
+| 11     | 🎨 Mejoras UI/UX con CSS y recursos estáticos                     |
+|        | 📝 Ayuda contextual, navegación sencilla                          |
+|        | 📘 Refactor técnico (nombres, estructuras)                        |
+| 12     | 📦 Cierre: documentación, README, video demo opcional             |
+|        | 🔄 Retrospectiva y presentación final                             |

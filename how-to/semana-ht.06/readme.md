@@ -1,10 +1,10 @@
-## 🧩 How to 5 – Autenticación y Autorización
+##  How to 5 – Autenticación y Autorización
 
 > Semana clave donde nuestro sistema comienza a **proteger recursos sensibles**, limitando el acceso según roles (`admin` / `operador`) y usando **JWT** para autenticación. Además, incorporamos middleware para autorización y pruebas sobre endpoints autenticados.
 
 ---
 
-### 🔐 1. Implementación de autenticación con JWT
+###  1. Implementación de autenticación con JWT
 
 * Se configuró el sistema para trabajar con **JSON Web Tokens (JWT)**:
 
@@ -25,7 +25,7 @@
 
 ---
 
-### 👤 2. Definición de roles y permisos
+###  2. Definición de roles y permisos
 
 * Se definieron dos roles principales:
 
@@ -36,7 +36,7 @@
 
 ---
 
-### 🔒 3. Middleware de autorización
+###  3. Middleware de autorización
 
 * Se implementó un **middleware personalizado** para leer y validar el JWT desde el header `Authorization`.
 
@@ -54,7 +54,7 @@
 
 ---
 
-### 🚧 4. Protección de endpoints
+###  4. Protección de endpoints
 
 * Se protegieron distintos endpoints del sistema usando las dependencias de seguridad:
 
@@ -72,7 +72,7 @@
 
 ---
 
-### 🧪 5. Pruebas automatizadas de endpoints autenticados
+###  5. Pruebas automatizadas de endpoints autenticados
 
 * Se desarrollaron pruebas con `pytest` para:
 
@@ -85,7 +85,7 @@
 
 ---
 
-### 📌 6. Consideraciones adicionales
+###  6. Consideraciones adicionales
 
 * No se implementó un sistema de usuarios real (con base de datos), sino que se simularon usuarios válidos con contraseñas hardcodeadas (modo demo).
 * El objetivo fue **comprender el flujo JWT completo** y cómo usarlo para proteger recursos REST.

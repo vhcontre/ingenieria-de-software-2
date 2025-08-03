@@ -1,22 +1,22 @@
-### 🧩 How to 4: Módulo de movimientos
+###  How to 4: Módulo de movimientos
 
 | Tema                            | Descripción                                                                                                   |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 📦 Módulo de movimientos        | Iniciar el CRUD de movimientos de stock (entrada/salida)                                                      |
-| 🔄 Relaciones entre entidades   | Asignar productos a depósitos, establecer relaciones (FK) en ORM y dominio                                    |
-| 🧪 Pruebas de lógica de negocio | Verificar reglas: no permitir stock negativo, validar existencia de depósito/producto al registrar movimiento |
-| 💾 Formularios web (opcional)   | Si hay tiempo: primer acercamiento a una vista web con formulario de carga de movimiento                      |
+|  Módulo de movimientos        | Iniciar el CRUD de movimientos de stock (entrada/salida)                                                      |
+|  Relaciones entre entidades   | Asignar productos a depósitos, establecer relaciones (FK) en ORM y dominio                                    |
+|  Pruebas de lógica de negocio | Verificar reglas: no permitir stock negativo, validar existencia de depósito/producto al registrar movimiento |
+|  Formularios web (opcional)   | Si hay tiempo: primer acercamiento a una vista web con formulario de carga de movimiento                      |
 
 
-### 🎯 Objetivo general
+###  Objetivo general
 
 Agregar la funcionalidad para **registrar movimientos de stock** entre depósitos, incorporando validaciones, relaciones entre entidades, y consolidando el modelo de dominio.
 
 ---
 
-### 🧠 Contenidos técnicos trabajados
+###  Contenidos técnicos trabajados
 
-#### 1. 🔗 Relaciones entre entidades (Producto, Depósito y Movimiento)
+#### 1.  Relaciones entre entidades (Producto, Depósito y Movimiento)
 
 * Se introduce la entidad `Movimiento`.
 * Se vincula con `Producto` y `Depósito` mediante ID o referencias (dependiendo del enfoque).
@@ -31,7 +31,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
   deposito_id: UUID
   ```
 
-#### 2. 🧱 Modelo de dominio
+#### 2.  Modelo de dominio
 
 * Se diseña el **modelo `Movimiento` en la capa de dominio**.
 * Se crean validaciones de lógica de negocio como métodos de instancia o servicios.
@@ -41,7 +41,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
   * No se permite egreso si no hay suficiente stock.
   * Se requiere que el producto y depósito estén registrados.
 
-#### 3. 🗂️ Repositorio y persistencia
+#### 3. ️ Repositorio y persistencia
 
 * Se implementa el `MovimientoRepository`, análogo a productos y depósitos.
 * Se integran los métodos:
@@ -52,7 +52,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
   get_by_id(id: UUID) -> Optional[Movimiento]
   ```
 
-#### 4. 🧪 Reglas de validación (lógica de negocio)
+#### 4.  Reglas de validación (lógica de negocio)
 
 * Validaciones embebidas en servicio o en constructor:
 
@@ -61,7 +61,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
   * `assert cantidad > 0`
   * Para egresos: `assert stock_actual >= cantidad`
 
-#### 5. 🧾 Consola de interacción
+#### 5.  Consola de interacción
 
 * Se agregan comandos como:
 
@@ -72,7 +72,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
 * Se consulta la existencia previa de producto y depósito antes de registrar.
 * Se actualiza el stock (acumulado) según el tipo de movimiento.
 
-#### 6. 📈 Acumulación de stock (modelo simple)
+#### 6.  Acumulación de stock (modelo simple)
 
 * Se construye una función para calcular el stock por producto y depósito:
 
@@ -87,7 +87,7 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
 
 ---
 
-### 📌 Extras opcionales (si el grupo avanzó más)
+###  Extras opcionales (si el grupo avanzó más)
 
 #### ✔️ Validación con Pydantic
 
@@ -101,9 +101,12 @@ Agregar la funcionalidad para **registrar movimientos de stock** entre depósito
 
 ---
 
-### 📚 Conexión con teoría (Somerville u otros)
+###  Conexión con teoría (Somerville u otros)
 
 * Relación con **Unidad 1: Métricas**: medir cantidad de movimientos, tipos, stock promedio.
 * Preparación para **Unidad 4: Pruebas**: ya se trabaja lógica con validaciones simples y se pueden testear.
 * Ejemplo de consolidación de **modelo de dominio** con integridad de datos.
+
+
+
 

@@ -1,8 +1,8 @@
-### 🚀 How to 3 – Objetivo central
+###  How to 3 – Objetivo central
 
 > **Construcción de los servicios de lógica de negocio y la capa de acceso a datos**
 
-#### 🧩 Componentes clave esperados:
+####  Componentes clave esperados:
 
 * Carpeta `services/` con funciones como `create_product`, `get_product_by_id`, `list_products`
 * Carpeta `repositories/` o `db_access/` con funciones de acceso tipo `insert_product`, `query_product_by_id`, etc.
@@ -13,10 +13,10 @@
 
 ---
 
-### 📁 Estructura típica esperada
+###  Estructura típica esperada
 
 ```
-📦 project_root/
+ project_root/
 ├── models/
 │   └── product.py
 ├── schemas/

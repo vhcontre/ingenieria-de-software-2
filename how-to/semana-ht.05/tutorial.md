@@ -1,15 +1,15 @@
-## 📦 How to 4 – Módulo de Movimientos de Stock + Reglas de Negocio
+##  How to 4 – Módulo de Movimientos de Stock + Reglas de Negocio
 
 | Semana | Objetivos principales                                                                          |
 | ------ | ---------------------------------------------------------------------------------------------- |
-| 4      | 📦 Iniciar el CRUD de movimientos (entrada/salida)                                             |
-|        | 🔄 Establecer relaciones entre entidades (producto ↔ depósito ↔ movimiento)                    |
-|        | 🧪 Implementar y testear validaciones de stock                                                 |
-|        | 🌐 (Opcional) Iniciar el primer formulario web con FastAPI + Jinja2 para registrar movimientos |
+| 4      |  Iniciar el CRUD de movimientos (entrada/salida)                                             |
+|        |  Establecer relaciones entre entidades (producto ↔ depósito ↔ movimiento)                    |
+|        |  Implementar y testear validaciones de stock                                                 |
+|        |  (Opcional) Iniciar el primer formulario web con FastAPI + Jinja2 para registrar movimientos |
 
 ---
 
-### 🎯 Objetivos específicos de la semana
+###  Objetivos específicos de la semana
 
 * [x] Crear la **entidad Movimiento** en dominio y base de datos
 * [x] Definir relaciones: `producto_id`, `deposito_id` (FK en ORM y dominio)
@@ -19,7 +19,7 @@
 
 ---
 
-### 🧱 Modelo de dominio: `Movimiento`
+###  Modelo de dominio: `Movimiento`
 
 Se creó el modelo `Movimiento` en la capa de dominio, con atributos:
 
@@ -34,11 +34,11 @@ class Movimiento:
         self.fecha = fecha
 ```
 
-> 🧠 Se comienza a aplicar **DDD (Domain-Driven Design)**: la entidad contiene lógica de validación y no es solo un contenedor de datos.
+>  Se comienza a aplicar **DDD (Domain-Driven Design)**: la entidad contiene lógica de validación y no es solo un contenedor de datos.
 
 ---
 
-### 🗃️ ORM: tabla `movimientos`
+### ️ ORM: tabla `movimientos`
 
 ```python
 class MovimientoORM(Base):
@@ -56,7 +56,7 @@ class MovimientoORM(Base):
 
 ---
 
-### 🔄 Relaciones entre entidades
+###  Relaciones entre entidades
 
 * Un **movimiento** siempre refiere a un producto y un depósito existentes.
 * Se valida en consola o servicio que ambos existan antes de registrar.
@@ -64,7 +64,7 @@ class MovimientoORM(Base):
 
 ---
 
-### 🧪 Validaciones de lógica de negocio
+###  Validaciones de lógica de negocio
 
 Desde la consola o el servicio se aplican:
 
@@ -75,7 +75,7 @@ Desde la consola o el servicio se aplican:
 
 ---
 
-### 📈 Cálculo de stock
+###  Cálculo de stock
 
 Se implementa una función o servicio para calcular el stock:
 
@@ -90,7 +90,7 @@ def calcular_stock(producto_id, deposito_id) -> int:
 
 ---
 
-### 🖥️ Consola de movimiento (si aplica)
+### ️ Consola de movimiento (si aplica)
 
 ```
 1. Registrar movimiento
@@ -101,7 +101,7 @@ def calcular_stock(producto_id, deposito_id) -> int:
 
 ---
 
-### 🌐 (Opcional) Primer formulario web
+###  (Opcional) Primer formulario web
 
 Si el grupo avanzó con FastAPI + Jinja2, se creó una vista con formulario:
 
@@ -111,7 +111,7 @@ Si el grupo avanzó con FastAPI + Jinja2, se creó una vista con formulario:
 
 ---
 
-### 🧪 Pruebas (si se implementaron)
+###  Pruebas (si se implementaron)
 
 * Se pueden escribir pruebas unitarias para:
 
@@ -121,7 +121,7 @@ Si el grupo avanzó con FastAPI + Jinja2, se creó una vista con formulario:
 
 ---
 
-### 📚 Vinculación teórica (Somerville)
+###  Vinculación teórica (Somerville)
 
 * **Unidad 3 / 4**: lógica de negocio → reglas de consistencia
 * **Unidad 5**: relaciones entre entidades, diseño robusto

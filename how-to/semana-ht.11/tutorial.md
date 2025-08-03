@@ -1,4 +1,4 @@
-# 📅 How to 9 – Módulo de Alertas y Reportes (FastAPI + Jinja2 + CSV)
+#  How to 9 – Módulo de Alertas y Reportes (FastAPI + Jinja2 + CSV)
 
 ## 1. Introducción
 
@@ -83,7 +83,7 @@ Editá `app/templates/base.html` para agregar un menú más completo:
 {% block title %}Reportes e Alertas{% endblock %}
 
 {% block content %}
-<h2>📊 Reportes de Inventario</h2>
+<h2> Reportes de Inventario</h2>
 
 <h3>⚠️ Productos bajo stock mínimo</h3>
 {% if alertas %}
@@ -98,7 +98,7 @@ Editá `app/templates/base.html` para agregar un menú más completo:
 
 <hr>
 
-<h3>📥 Descargar reporte CSV</h3>
+<h3> Descargar reporte CSV</h3>
 <form action="/web/reportes/csv" method="get">
     <button type="submit">Descargar CSV de productos</button>
 </form>
@@ -232,7 +232,7 @@ def test_descargar_csv(client, db_session):
 
 ## 8. Cierre y resumen
 
-Al terminar esta semana tendrás:
+Al terminar esta semana tendremos:
 
 * Un módulo web para visualizar alertas y descargar reportes CSV.
 * Navegación mejorada para la interfaz web.

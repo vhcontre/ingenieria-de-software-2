@@ -1,142 +1,138 @@
-## 📘Ingeniería de Software II
->
-El Software. Del Producto. Definición y alcance de un sistema. Selección de herramientas. Análisis estratégico sobre la vida del producto (software). Pautas de Mantenimiento. Reconvertir Vs. Mantener. Del Proceso. Métodos y herramientas. Etapas en la construcción de un software. Modelos de procesos. Modelo lineal secuencial. Modelo de prototipos. El modelo DRA. Modelos evolutivos: modelo incremental, modelo espiral, modelo de desarrollo concurrente. Modelo de ensamblaje de componentes. Modelo de métodos formales. Formación y gestión de equipos de trabajo. Conceptos de planificación y seguimiento de proyectos de software. 
+### Ingeniería de Software II
+
+El software. El producto. Definición y alcance de un sistema. Selección de herramientas. Análisis estratégico sobre la vida del producto. Pautas de mantenimiento. Reconvertir vs. mantener. El proceso. Métodos y herramientas. Etapas en la construcción de un software. Modelos de procesos: modelo lineal secuencial, modelo de prototipos, modelo DRA, modelos evolutivos (incremental, espiral, desarrollo concurrente), modelo de ensamblaje de componentes, modelo de métodos formales. Formación y gestión de equipos de trabajo. Conceptos de planificación y seguimiento de proyectos de software.
 
 ---
 
+## Resumen teórico – Ingeniería de Software
 
-## 🧠 Resumen teórico – Ingeniería de Software (Unidad)
+### 1. El producto software
 
-### 1. 💾 **El Producto Software**
+**Definición**: El software es un conjunto de programas, datos y documentación que realizan tareas específicas para los usuarios o sistemas.
 
-* **Definición**: El software es un conjunto de programas, datos y documentación que realizan tareas específicas para los usuarios o sistemas.
+**Tipos de software**:
+- Software de sistema  
+- Software de aplicación  
+- Software de ingeniería  
 
-* **Tipos**:
-
-  * Software de sistema
-  * Software de aplicación
-  * Software de ingeniería
-
-* **Alcance de un sistema**:
-
-  * Requiere comprender límites funcionales y técnicos.
-  * Abarca componentes de hardware, redes, personas, procesos y datos.
+**Alcance de un sistema**:
+- Comprensión de límites funcionales y técnicos  
+- Incluye componentes de hardware, redes, personas, procesos y datos  
 
 ---
 
-### 2. 🛠️ **Selección de herramientas**
+### 2. Selección de herramientas
 
-* Herramientas CASE (Computer-Aided Software Engineering).
-* Control de versiones (Git), integración continua, gestores de tareas, entornos de desarrollo (IDEs), etc.
-* Se eligen según:
-
-  * Tamaño del equipo
-  * Complejidad del producto
-  * Grado de automatización necesario
+- Herramientas CASE (Computer-Aided Software Engineering)
+- Control de versiones (Git), integración continua, gestores de tareas, entornos de desarrollo (IDEs), entre otros
+- La elección depende del tamaño del equipo, complejidad del producto y grado de automatización requerido
 
 ---
 
-### 3. 🧩 **Ciclo de vida del producto software**
+### 3. Ciclo de vida del producto software
 
-* El software tiene un ciclo de vida que abarca desde su concepción hasta su retiro.
-* **Análisis estratégico**:
-
-  * ¿Conviene mantener el sistema actual?
-  * ¿Debe reconvertirse/migrarse a nuevas tecnologías?
-  * Evaluar costos, riesgos y necesidades futuras.
-
----
-
-### 4. 🔧 **Mantenimiento vs Reconvertir**
-
-* **Mantenimiento**:
-
-  * Perfectivo: mejoras funcionales
-  * Correctivo: errores
-  * Adaptativo: nuevas plataformas
-
-* **Reconvertir (reingeniería)**:
-
-  * Aplicar mejoras estructurales o tecnológicas más profundas.
-  * Suele usarse cuando el mantenimiento es muy costoso o riesgoso.
+- El ciclo de vida comprende desde la concepción del software hasta su retiro
+- **Análisis estratégico**:
+  - ¿Conviene mantener el sistema actual?
+  - ¿Debe reconvertirse o migrarse?
+  - Evaluación de costos, riesgos y proyecciones
 
 ---
 
-### 5. 🛤️ **Del Proceso de Software**
+### 4. Mantenimiento vs. reconvertir
 
-* **Proceso de software**: conjunto estructurado de actividades requeridas para desarrollar un sistema software.
-* Actividades típicas: especificación, desarrollo, validación, evolución.
+**Mantenimiento**:
+- Perfectivo: mejoras funcionales
+- Correctivo: resolución de errores
+- Adaptativo: adaptación a nuevas plataformas
 
-#### Métodos y herramientas
-
-* Modelos de procesos (ver más abajo)
-* Herramientas CASE, frameworks ágiles, pruebas automáticas, etc.
-
----
-
-### 6. 🔁 **Modelos de procesos de software**
-
-#### 📍 Modelo Lineal Secuencial (Waterfall)
-
-* Etapas rígidas: análisis → diseño → implementación → pruebas
-* Muy documentado, ideal para proyectos bien definidos desde el inicio
-* Riesgo: poco flexible ante cambios
-
-#### 🧪 Modelo de Prototipos
-
-* Construcción rápida de una versión simplificada
-* Feedback temprano del usuario
-* Riesgo: el prototipo puede ser malinterpretado como producto final
-
-#### 🔄 Modelo DRA (Desarrollo Rápido de Aplicaciones)
-
-* Énfasis en interfaces gráficas, desarrollo por módulos
-* Rápida entrega, orientado a usuarios finales
-* Se apoya en herramientas visuales y frameworks
-
-#### 🚀 Modelos Evolutivos
-
-* **Incremental**: se entrega funcionalidad por partes. Ventaja: feedback temprano.
-* **Espiral**: centrado en el análisis de riesgos. Se avanza por ciclos: planificación, evaluación, desarrollo.
-* **Concurrente**: las fases pueden superponerse, útil para trabajo en paralelo.
-
-#### 🧱 Modelo de Ensamblaje de Componentes
-
-* Se reutilizan componentes ya desarrollados
-* Muy útil en ecosistemas con librerías, APIs, microservicios
-* Desafío: integración de piezas heterogéneas
-
-#### 🧮 Modelos de Métodos Formales
-
-* Basado en matemáticas para definir, especificar y verificar software
-* Se usa en sistemas críticos (seguridad, aviación, medicina)
-* Requiere alta especialización
+**Reconvertir (reingeniería)**:
+- Aplicación de mejoras estructurales o tecnológicas significativas
+- Se utiliza cuando el mantenimiento resulta costoso o riesgoso
 
 ---
 
-### 7. 👥 **Gestión de equipos de desarrollo**
+### 5. El proceso de software
 
-* **Formación**:
+**Definición**: Conjunto estructurado de actividades necesarias para desarrollar un sistema de software.
 
-  * Equipos cross-funcionales
-  * Roles definidos: líderes técnicos, testers, devs, analistas
-* **Factores clave**:
+**Actividades principales**:
+- Especificación  
+- Desarrollo  
+- Validación  
+- Evolución  
 
-  * Comunicación
-  * Motivación
-  * Toma de decisiones
-  * Estilos de liderazgo
+**Métodos y herramientas**:
+- Modelos de procesos
+- Herramientas CASE
+- Pruebas automatizadas
+- Frameworks ágiles
 
 ---
 
-### 8. 📈 **Planificación y seguimiento**
+### 6. Modelos de procesos de software
 
-* **Planificación**:
+**Modelo Lineal Secuencial (Waterfall)**:
+- Etapas rígidas: análisis → diseño → implementación → pruebas
+- Muy documentado
+- Poco flexible ante cambios
 
-  * Estimaciones de esfuerzo, recursos y cronograma
-  * Herramientas como diagramas de Gantt, métricas, puntos de historia
+**Modelo de Prototipos**:
+- Desarrollo rápido de una versión simplificada
+- Permite obtener feedback temprano
+- Riesgo de ser percibido como producto final
 
-* **Seguimiento**:
+**Modelo DRA (Desarrollo Rápido de Aplicaciones)**:
+- Fuerte apoyo en herramientas visuales
+- Desarrollo modular
+- Orientado a usuarios finales
 
-  * Control de versiones, testing continuo, reuniones periódicas
-  * Uso de KPIs (indicadores de desempeño)
+**Modelos Evolutivos**:
+- **Incremental**: desarrollo por entregas parciales
+- **Espiral**: se basa en la gestión de riesgos mediante ciclos iterativos
+- **Concurrente**: permite superposición de fases y trabajo en paralelo
+
+**Modelo de Ensamblaje de Componentes**:
+- Reutilización de componentes existentes
+- Muy utilizado en arquitecturas basadas en servicios
+- Desafío: integración entre piezas heterogéneas
+
+**Modelos de Métodos Formales**:
+- Uso de matemáticas para definir y verificar el software
+- Aplicable en sistemas críticos
+- Requiere formación especializada
+
+---
+
+### 7. Gestión de equipos de desarrollo
+
+**Formación del equipo**:
+- Equipos multidisciplinarios
+- Roles definidos: líderes técnicos, desarrolladores, testers, analistas
+
+**Factores clave**:
+- Comunicación efectiva  
+- Motivación del equipo  
+- Toma de decisiones  
+- Estilos de liderazgo
+
+---
+
+### 8. Planificación y seguimiento
+
+**Planificación**:
+- Estimación de esfuerzo, recursos y tiempos
+- Uso de herramientas como diagramas de Gantt, métricas de estimación, puntos de historia
+
+**Seguimiento**:
+- Control de versiones y testing continuo
+- Reuniones periódicas
+- Uso de indicadores clave de desempeño (KPIs)
+
+----
+ [Presentación: Introducción a Ingeniería de Software (Prezi)](https://prezi.com/view/Pih5gr1uL0Fv3vRPR2ZU/)
+
+
+
+
+

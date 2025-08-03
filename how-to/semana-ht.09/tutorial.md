@@ -1,8 +1,6 @@
-# 📘 How to 7 – Integración de Jinja2 para interfaz web
+#  How to 7 – Integración de Jinja2 para interfaz web
 
-
-
-## 📅 Objetivos principales
+##  Objetivos principales
 
 * Integrar Jinja2 con FastAPI para renderizar páginas HTML.
 * Crear rutas que muestren vistas web con datos reales desde la base.
@@ -22,7 +20,7 @@
 
 ---
 
-## 🔧 Paso 1: Instalación de dependencias
+##  Paso 1: Instalación de dependencias
 
 ```bash
 pip install jinja2 aiofiles
@@ -30,7 +28,7 @@ pip install jinja2 aiofiles
 
 ---
 
-## 🧱 Paso 2: Configurar en `main.py`
+##  Paso 2: Configurar en `main.py`
 
 ```python
 from fastapi import FastAPI
@@ -48,7 +46,7 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 ---
 
-## 🗂️ Paso 3: Estructura de carpetas
+## ️ Paso 3: Estructura de carpetas
 
 ```
 app/
@@ -64,7 +62,7 @@ app/
 
 ---
 
-## 🧪 Paso 4: Plantilla base (`base.html`)
+##  Paso 4: Plantilla base (`base.html`)
 
 ```html
 <!DOCTYPE html>
@@ -76,7 +74,7 @@ app/
 </head>
 <body>
     <header>
-        <h1>📦 Sistema de Inventario</h1>
+        <h1> Sistema de Inventario</h1>
         <nav>
             <a href="/web/productos">Productos</a>
         </nav>
@@ -91,7 +89,7 @@ app/
 
 ---
 
-## 📦 Paso 5: Plantilla productos (`productos.html`)
+##  Paso 5: Plantilla productos (`productos.html`)
 
 ```html
 {% extends "base.html" %}
@@ -99,7 +97,7 @@ app/
 {% block title %}Listado de Productos{% endblock %}
 
 {% block content %}
-<h2>📋 Listado de Productos</h2>
+<h2> Listado de Productos</h2>
 
 <table border="1" cellspacing="0" cellpadding="8">
     <tr>
@@ -128,7 +126,7 @@ app/
 
 ---
 
-## 🚏 Paso 6: Crear ruta `/web/productos` (`routers/web_interface.py`)
+##  Paso 6: Crear ruta `/web/productos` (`routers/web_interface.py`)
 
 ```python
 from fastapi import APIRouter, Request, Depends
@@ -158,7 +156,7 @@ app.include_router(web_interface.router)
 
 ---
 
-## 🧪 Paso 8: Probar la vista
+##  Paso 8: Probar la vista
 
 * Ejecutá tu API (`uvicorn app.main:app --reload`)
 * Abrí en el navegador `http://localhost:8000/web/productos`

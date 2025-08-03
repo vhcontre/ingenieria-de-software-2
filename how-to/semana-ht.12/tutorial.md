@@ -1,4 +1,4 @@
-# 📅 How to 10: Dockerización del Backend y Base de Datos
+#  How to 10: Dockerización del Backend y Base de Datos
 
 ---
 
@@ -107,7 +107,3 @@ docker compose logs backend
 * Para entornos con bases de datos como PostgreSQL, configura usuario, contraseña y puerto en variables de entorno dentro del `docker-compose.yml`.
 
 * Controlá la versión de Python en el `Dockerfile` para evitar incompatibilidades.
-
----
-
-Con esto, ya tenés un entorno dockerizado para el backend y base de datos listo para desarrollo, pruebas y despliegue.

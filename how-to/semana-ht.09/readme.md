@@ -1,8 +1,8 @@
-# 📘 How to 7 – Integración de Jinja2 para Interfaz Web
+#  How to 7 – Integración de Jinja2 para Interfaz Web
 
 ---
 
-## 🎯 Objetivos de la How to 7
+##  Objetivos de la How to 7
 
 * Integrar el motor de plantillas Jinja2 con FastAPI para renderizar páginas HTML dinámicas.
 * Crear rutas web que sirvan contenido HTML generado con Jinja2.
@@ -181,7 +181,7 @@ async def list_products(request: Request):
 
 ---
 
-## 7. Ejercicio propuesto para estudiantes
+## 7. Ejercicio propuesto
 
 * Crear una plantilla `movimientos.html` para listar movimientos de entrada y salida.
 * Crear la ruta `/movimientos` que renderice esa plantilla con datos reales.

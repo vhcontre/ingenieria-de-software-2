@@ -1,25 +1,25 @@
-# 📅 How to 10: Dockerización
+#  How to 10: Dockerización
 
 
-### 🎯 Objetivos principales
+###  Objetivos principales
 
 | Objetivo                                                      | Estado       |
 | ------------------------------------------------------------- | ------------ |
-| 🐳 Dockerización del backend y base de datos                  | ✅ Completado |
-| 🔁 Integración de CI/CD con GitHub Actions (simulada o local) | ✅ Completado |
+|  Dockerización del backend y base de datos                  | ✅ Completado |
+|  Integración de CI/CD con GitHub Actions (simulada o local) | ✅ Completado |
 
 ---
 
-### 🧠 Aprendizajes y decisiones técnicas
+###  Aprendizajes y decisiones técnicas
 
 | Tema                             | Detalle                                                                                          |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 🐳 Contenerización con Docker    | Se crearon imágenes Docker para el backend FastAPI y para la base de datos (PostgreSQL o SQLite) |
-| 🧱 Docker Compose                | Orquestación de servicios para facilitar despliegue y desarrollo local                           |
-| 🔁 CI/CD con GitHub Actions      | Workflow configurado para construir imágenes, ejecutar tests y simular despliegues               |
-| 🔧 Variables de entorno          | Se parametrizó configuración sensible como URLs de base de datos, claves secretas, puertos       |
-| 📂 Montaje de volúmenes          | Datos persistentes para la base de datos dentro del contenedor                                   |
-| 🐍 Manejo de dependencias Python | Uso de `requirements.txt` y virtual environments dentro del contenedor                           |
+|  Contenerización con Docker    | Se crearon imágenes Docker para el backend FastAPI y para la base de datos (PostgreSQL o SQLite) |
+|  Docker Compose                | Orquestación de servicios para facilitar despliegue y desarrollo local                           |
+|  CI/CD con GitHub Actions      | Workflow configurado para construir imágenes, ejecutar tests y simular despliegues               |
+|  Variables de entorno          | Se parametrizó configuración sensible como URLs de base de datos, claves secretas, puertos       |
+|  Montaje de volúmenes          | Datos persistentes para la base de datos dentro del contenedor                                   |
+|  Manejo de dependencias Python | Uso de `requirements.txt` y virtual environments dentro del contenedor                           |
 
 ---
 
@@ -35,7 +35,7 @@
 
 ---
 
-### 🚀 Estado del proyecto al cierre de la semana 10
+###  Estado del proyecto al cierre de la semana 10
 
 * Proyecto listo para ser desplegado con Docker en cualquier entorno.
 * Proceso de desarrollo y pruebas automatizado con GitHub Actions.
@@ -44,7 +44,7 @@
 
 ---
 
-### 🛠️ Archivos clave modificados / agregados
+### ️ Archivos clave modificados / agregados
 
 * `Dockerfile` (backend)
 * `docker-compose.yml`
@@ -53,7 +53,7 @@
 
 ---
 
-### 📘 Recomendaciones finales
+###  Recomendaciones finales
 
 * Verificar que el entorno local Docker funcione antes de desplegar en producción.
 * Mantener las imágenes actualizadas y usar tags semánticos.

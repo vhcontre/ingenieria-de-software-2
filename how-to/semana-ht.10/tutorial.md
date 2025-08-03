@@ -1,4 +1,4 @@
-# 📅 How to 8: Formulario Web para Movimientos con Validación en FastAPI + Jinja2
+#  How to 8: Formulario Web para Movimientos con Validación en FastAPI + Jinja2
 
 
 
@@ -18,7 +18,7 @@ En `app/templates/movimiento_form.html` definimos el formulario que el usuario c
 ```html
 {% extends "base.html" %}
 {% block content %}
-<h2>📦 Registrar Movimiento</h2>
+<h2> Registrar Movimiento</h2>
 
 <form action="/web/movimientos" method="post">
     <label for="producto_id">Producto ID:</label>

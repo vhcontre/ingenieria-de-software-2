@@ -1,8 +1,8 @@
-# 📘 How to 6 – Pruebas de integración, Documentación con Swagger y CI con GitHub Actions
+#  How to 6 – Pruebas de integración, Documentación con Swagger y CI con GitHub Actions
 
 ---
 
-## 🎯 Objetivos de la Unidad 6
+##  Objetivos de la Unidad 6
 
 * Implementar pruebas de integración que validen flujos completos del sistema.
 * Documentar los endpoints REST usando Swagger con FastAPI para facilitar el consumo de la API.
